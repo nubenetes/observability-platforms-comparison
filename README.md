@@ -244,31 +244,57 @@ pie title 3-Year TCO Distribution: Commercial Turnkey (Dynatrace Managed)
 
 Based on the air-gapped mandate, workload complexity (Java, Kafka, SQL Server), and operational economics, platforms are categorized into strategic decision tiers:
 
-```mermaid
-graph TD
-    classDef mandateNode fill:#0b192c,stroke:#00a8ff,stroke-width:2px,color:#ffffff;
-    classDef tier1 fill:#134e2c,stroke:#2ecc71,stroke-width:3px,color:#ffffff;
-    classDef tier2 fill:#1c3d72,stroke:#3498db,stroke-width:2px,color:#ffffff;
-    classDef oss fill:#3d1a54,stroke:#9b59b6,stroke-width:2px,color:#ffffff;
-
-    M["<b>Enterprise Decision Mandate</b><br/>Air-Gapped Cloud • Java, Kafka & SQL Server Fleet"]:::mandateNode
-
-    T1["⭐ <b>TIER 1: PRIMARY RECOMMENDATION</b><br/><b>Dynatrace Managed</b><br/>Davis® Causal AI • OneAgent Automation • Air-Gap Parity<br/><i>Outcome: Lowest Risk & Fastest Time-to-Value</i>"]:::tier1
-
-    T2["🔄 <b>TIER 2: COMMERCIAL ALTERNATIVES</b><br/>Viable fallbacks for 4-6 week PoC evaluation"]:::tier2
-
-    T2A["<b>Instana Self-Hosted</b><br/>1s Metric Resolution • AutoTrace™ Bytecode<br/><i>Best APM Alternative</i>"]:::tier2
-
-    T2B["<b>Elastic Stack (ECK)</b><br/>Forensic Log Search • eBPF Universal Profiling<br/><i>Best Data-Heavy Alternative</i>"]:::tier2
-
-    TOSS["🛠️ <b>STRATEGIC PATHWAY (OPEN SOURCE)</b><br/><b>Grafana OSS Stack (LGTM + Pyroscope)</b><br/>Zero Software Licensing • 100% CNCF / OTel Standards<br/><i>Outcome: Requires Dedicated 4–6 FTE SRE Platform Team</i>"]:::oss
-
-    M -->|Primary Path: Turnkey & Lowest Risk| T1
-    M -->|Commercial Alternatives| T2
-    M -->|Open-Source Standards Track| TOSS
-
-    T2 -->|APM & Host Pricing Focus| T2A
-    T2 -->|Log Analytics & Forensics Focus| T2B
+```text
++=============================================================================+
+|                        ENTERPRISE DECISION MANDATE                          |
+|       Sovereign Air-Gapped Cloud  *  Java, Kafka & SQL Server Fleet         |
++=============================================================================+
+                                       |
+                                       | [Primary Path: Turnkey & Lowest Risk]
+                                       v
++-----------------------------------------------------------------------------+
+| TRACK 1: PRIMARY ENTERPRISE RECOMMENDATION (Turnkey & Lowest Risk)          |
+| -> Dynatrace Managed                                                        |
++-----------------------------------------------------------------------------+
+| * Turnkey OneAgent Injection  : Automated OpenShift, VM & container attach  |
+| * Davis(R) Causal AI Engine   : Deterministic topological root-cause engine |
+| * Air-Gapped Sovereign Parity : 100% offline cluster, zero egress required  |
+| * Out-of-the-Box Coverage     : Complete turnkey coverage across 7 Pillars  |
++-----------------------------------------------------------------------------+
+| OUTCOME: Lowest operational risk & fastest time-to-value for the enterprise |
++-----------------------------------------------------------------------------+
+                                       |
+                                       | [Commercial Alternatives: 4-6 Wk PoC]
+                                       v
++-----------------------------------------------------------------------------+
+| TRACK 2: VIABLE COMMERCIAL ALTERNATIVES (Parallel PoC Validation)           |
++-----------------------------------------------------------------------------+
+| [2A] Instana Self-Hosted (APM & Host Pricing Focus)                         |
+| * 1-Second Metric Resolution  : Real-time high-fidelity streaming           |
+| * AutoTrace(TM) Bytecode      : Zero-code instant container sensor injection|
+| * Host-Based Licensing        : Predictable host pricing model              |
+| > VALUE: Best APM fallback if host pricing model is favored                 |
++ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - +
+| [2B] Elastic Stack ECK (Log Search & Whole-System Profiling Focus)          |
+| * Forensic Lucene Search      : Industry standard log analytics & compliance|
+| * Universal Profiling (eBPF)  : Whole-system kernel CPU & memory profiling  |
+| * Cloud-Native ECK Operator   : Deep certified OpenShift operator management|
+| > VALUE: Best alternative if log analytics is primary organizational driver |
++-----------------------------------------------------------------------------+
+                                       |
+                                       | [Open-Source Track: Build vs Buy]
+                                       v
++-----------------------------------------------------------------------------+
+| TRACK 3: STRATEGIC OPEN-SOURCE PATHWAY (High SRE Investment)                |
+| -> Grafana OSS Stack (LGTM + Pyroscope)                                     |
++-----------------------------------------------------------------------------+
+| * Zero Software Licensing     : 100% open-source, vendor-neutral telemetry  |
+| * CNCF / OTel Standards       : Mimir (metrics), Loki (logs), Tempo (traces)|
+| * Continuous Profiling        : Pyroscope eBPF-based runtime profiling      |
+| * In-House Operational Burden : Demands dedicated 4-6 FTE SRE platform team |
++-----------------------------------------------------------------------------+
+| OUTCOME: Maximum architectural freedom with highest internal SRE burden     |
++-----------------------------------------------------------------------------+
 ```
 
 ### 1. Tier 1 (Primary Recommendation): Dynatrace Managed
