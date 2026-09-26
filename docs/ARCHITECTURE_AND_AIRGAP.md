@@ -27,40 +27,48 @@ In this architecture, systems span across two primary operational zones:
 2. **Enterprise Datacenter (On-Premises)**: Hosts the **Development (DES)** OpenShift cluster and supporting infrastructure, equipped with internet connectivity to facilitate access to external software repositories, container registries, and developer tooling.
 3. **Enterprise Virtualization Fabric (VMware vSphere)**: Large fleets of virtual machines hosted across both datacenters, running enterprise services, batch processing, and shared data stores.
 
-```mermaid
-graph TB
-    subgraph "Air-Gapped Sovereign Cloud Enclave (Isolated / No Egress)"
-        subgraph "OpenShift Cluster: PRO (4.18+)"
-            PodPro1["Core Java Microservices"]
-            PodPro2["Kafka Brokers & Topics"]
-            PodPro3["Platform: Keycloak / Vault"]
-        end
-        subgraph "OpenShift Cluster: PRE (4.18+)"
-            PodPre1["Staging Java Workloads"]
-            PodPre2["Integration Test Kafka"]
-        end
-        subgraph "Virtualization Enclave"
-            VMPro["VMware vSphere VMs (No Egress)"]
-        end
-        DBShared["Microsoft SQL Server (Internal Network)"]
-    end
+```text
++=============================================================================+
+|             ENTERPRISE HYBRID TOPOLOGY & AIR-GAPPED BOUNDARIES              |
++=============================================================================+
 
-    subgraph "Connected Enterprise Datacenter"
-        subgraph "OpenShift Cluster: DES (4.18+)"
-            PodDev1["Dev Microservices"]
-            PodDev2["CI/CD: Tekton / ArgoCD"]
-        end
-        subgraph "Virtualization On-Prem"
-            VMDev["VMware vSphere VMs (Internal)"]
-        end
-        Internet((Internet & Egress))
-        DES --> Internet
-    end
-
-    PodPro1 --- DBShared
-    PodPre1 --- DBShared
-    PodPro1 --- PodPro2
-    PodPre1 --- PodPre2
+[ZONE 1: SOVEREIGN AIR-GAPPED CLOUD ENCLAVE]  (100% Isolated / Zero Egress)
++-----------------------------------------------------------------------------+
+| OpenShift Production (PRO 4.18+)          OpenShift Pre-Prod & Cert (PRE)   |
+| +-----------------------------------+     +-------------------------------+ |
+| | * Core Java Microservices         |     | * Staging & Regression Apps   | |
+| | * Apache Kafka Brokers & Topics   |     | * Integration Kafka Brokers   | |
+| | * Platform: Keycloak & Vault      |     | * Pre-Release Testing Suites  | |
+| +-----------------------------------+     +-------------------------------+ |
+|                  |                                        |                 |
+|                  +--------------------+-------------------+                 |
+|                                       v                                     |
+|                     +-----------------------------------+                   |
+|                     | Microsoft SQL Server (Internal DB)|                   |
+|                     +-----------------------------------+                   |
+|                                       ^                                     |
+| VMware vSphere Cluster (Air-Gapped)   |                                     |
+| +-------------------------------------+-----------------------------------+ |
+| | * Enterprise Virtual Machines  * Batch Processing  * Legacy Middleware  | |
+| +-------------------------------------------------------------------------+ |
++-----------------------------------------------------------------------------+
+                                       X
+                        [STRICT AIR-GAP FIREWALL DIODE]
+                   (Zero Internet Inbound / Outbound Egress)
+                                       X
+[ZONE 2: CONNECTED ENTERPRISE DATACENTER]    (Outbound Egress Allowed)
++-----------------------------------------------------------------------------+
+| OpenShift Development (DES 4.18+)         VMware vSphere Datacenter         |
+| +-----------------------------------+     +-------------------------------+ |
+| | * Dev Microservices & Sandbox     |     | * Dev & Test Virtual Fleet    | |
+| | * CI/CD: Tekton & ArgoCD GitOps   |     | * Internal Staging Services   | |
+| +-----------------------------------+     +-------------------------------+ |
+|                  |                                                          |
+|                  v                                                          |
+| +-------------------------------------------------------------------------+ |
+| | Egress Gateway -> Internet (Public Registries, Tooling, SaaS Endpoints) | |
+| +-------------------------------------------------------------------------+ |
++-----------------------------------------------------------------------------+
 ```
 
 ---
