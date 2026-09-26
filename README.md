@@ -245,39 +245,49 @@ pie title 3-Year TCO Distribution: Commercial Turnkey (Dynatrace Managed)
 Based on the air-gapped mandate, workload complexity (Java, Kafka, SQL Server), and operational economics, platforms are categorized into strategic decision tiers:
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'fontSize': '12px'
+  },
+  'flowchart': {
+    'nodeSpacing': 30,
+    'rankSpacing': 35
+  }
+}}%%
 flowchart TD
     classDef t1 fill:#143d30,stroke:#2ecc71,stroke-width:2px,color:#fff;
     classDef t2 fill:#14294d,stroke:#3b82f6,stroke-width:2px,color:#fff;
     classDef toss fill:#3b123d,stroke:#ec4899,stroke-width:2px,color:#fff;
     classDef out fill:#161b22,stroke:#30363d,stroke-width:1px,color:#c9d1d9;
 
-    subgraph T1_Box [" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIER 1: PRIMARY ENTERPRISE RECOMMENDATION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "]
+    subgraph T1_Box [" TIER 1: PRIMARY ENTERPRISE RECOMMENDATION "]
         direction TB
-        T1["<b>Dynatrace Managed</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Turnkey OneAgent auto-injection on OpenShift &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Davis® Causal AI automated root-cause detection &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• 100% offline air-gapped feature parity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::t1
-        O1["<b>Lowest Risk and Fastest Time-to-Value</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Zero-configuration topology mapping for Java, Kafka and SQL Server &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
+        T1["<b>Dynatrace Managed</b><br/>• Turnkey OneAgent auto-injection on OpenShift clusters<br/>• Davis® Causal AI automated topological root-cause detection<br/>• 100% offline air-gapped parity with zero outbound egress"]:::t1
+        O1["<b>Lowest Operational Risk & Fastest Time-to-Value</b><br/>Zero-configuration topology mapping across Java, Kafka & SQL Server"]:::out
         T1 --> O1
     end
 
-    subgraph T2_Box [" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIER 2: VIABLE COMMERCIAL ALTERNATIVES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "]
+    subgraph T2_Box [" TIER 2: VIABLE COMMERCIAL ALTERNATIVES "]
         direction TB
-        subgraph T2A_Box [" &nbsp;&nbsp;&nbsp; APM-Centric Focus &nbsp;&nbsp;&nbsp; "]
+        subgraph T2A_Box [" APM Focus "]
             direction TB
-            T2A["<b>Instana Self-Hosted</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• 1-second metric streaming resolution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Unsampled AutoTrace™ bytecode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Predictable host-based licensing &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::t2
-            O2A["<b>Direct Dynatrace Alternative</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Evaluate if host-based pricing is preferred &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
+            T2A["<b>Instana Self-Hosted</b><br/>• 1-second real-time streaming metric resolution<br/>• Unsampled AutoTrace™ bytecode container injection<br/>• Predictable host-based licensing without volume penalties"]:::t2
+            O2A["<b>APM-Centric Commercial Alternative</b><br/>Direct competitor to Dynatrace when host pricing is preferred"]:::out
             T2A --> O2A
         end
-        subgraph T2B_Box [" &nbsp;&nbsp;&nbsp; Log-Centric Focus &nbsp;&nbsp;&nbsp; "]
+        subgraph T2B_Box [" Log Search Focus "]
             direction TB
-            T2B["<b>Elastic Stack (ECK)</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Forensic log search and Lucene power &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Whole-system eBPF profiling &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Kubernetes-native ECK operator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::t2
-            O2B["<b>Data-Heavy Alternative</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Evaluate if log search is the primary driver &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
+            T2B["<b>Elastic Stack (ECK)</b><br/>• Industry-leading forensic log search & Lucene query power<br/>• Whole-system continuous profiling via kernel eBPF<br/>• Proven Kubernetes-native ECK operator deployment"]:::t2
+            O2B["<b>Data-Heavy Commercial Alternative</b><br/>Direct competitor to Dynatrace when log analytics dominates"]:::out
             T2B --> O2B
         end
     end
 
-    subgraph TOSS_Box [" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPECIAL STRATEGIC PATHWAY (OPEN SOURCE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "]
+    subgraph TOSS_Box [" SPECIAL STRATEGIC PATHWAY (OPEN SOURCE) "]
         direction TB
-        TOSS["<b>Grafana OSS Stack (LGTM + Pyroscope)</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Zero software licensing fees • 100% CNCF / OpenTelemetry native &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Modular best-of-breed telemetry stack with total architectural control &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::toss
-        O3["<b>High Internal SRE Commitment</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Requires dedicated in-house team of 4–6 platform SRE FTEs for maintenance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
+        TOSS["<b>Grafana OSS Stack (LGTM + Pyroscope)</b><br/>• Zero software licensing fees and 100% CNCF / OpenTelemetry native<br/>• Modular best-of-breed telemetry stack with total architectural control"]:::toss
+        O3["<b>High Internal SRE Platform Commitment</b><br/>Requires dedicated in-house team of 4–6 platform SRE FTEs for maintenance"]:::out
         TOSS --> O3
     end
 
