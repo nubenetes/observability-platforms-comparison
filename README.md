@@ -326,61 +326,108 @@ flowchart LR
 
 ## 12. References & Industry Citations
 
-This comparative analysis, architectural evaluation, and technical guide are built upon empirical enterprise telemetry research, official vendor documentation, and published industry standards:
+This comparative analysis, architectural evaluation, and technical guide are built upon empirical enterprise telemetry research, official vendor documentation, and published industry standards. Every reference is hyperlinked to its respective online source:
 
 ### 12.1 Industry Analyst Reports & Telemetry Standards
-1. **Gartner, Inc.**: *Magic Quadrant™ for Observability Platforms (2025)* — Dynatrace, Datadog, Splunk, New Relic, Cisco AppDynamics leader evaluations. [Gartner Peer Insights](https://www.gartner.com/reviews/market/observability-platforms).
-2. **Cloud Native Computing Foundation (CNCF)**: *CNCF Annual Survey (Cloud Native Telemetry & OpenTelemetry Adoption)*. [CNCF Annual Survey](https://www.cncf.io/).
-3. **World Wide Web Consortium (W3C)**: *W3C Recommendation: Trace Context (Level 1 & 2)* — Specifications for distributed context propagation (`traceparent`, `tracestate`). [w3.org/TR/trace-context/](https://www.w3.org/TR/trace-context/).
-4. **OpenTelemetry Project**: *OpenTelemetry Specifications, OTLP Protocol, and Semantic Conventions for Kubernetes, Kafka, and Databases*. [opentelemetry.io](https://opentelemetry.io/).
-5. **eG Innovations**: *The Three Pillars of Observability: Metrics, Logs and Traces* — Analysis of telemetry taxonomy and operational boundaries.
-6. **IBM Think & Insights**: *Three Pillars of Observability: Logs, Metrics and Traces* & *Observability Maturity Models*. [ibm.com/think/insights](https://www.ibm.com/think/insights/observability-pillars).
-7. **Baselime (Cloudflare)**: *What is Continuous Profiling? ELI5 Observability Glossary* — Foundational definition of code-level resource attribution as the 4th pillar.
+1. [2025 Gartner® Magic Quadrant™ for Observability Platforms - Dynatrace](https://www.dynatrace.com/gartner-magic-quadrant-for-observability-platforms/)
+2. [2025 Gartner® Magic Quadrant™ for Observability Platforms - Splunk](https://www.splunk.com/en_us/form/gartner-magic-quadrant-for-observability-platforms.html)
+3. [Best Observability Platforms Reviews 2025 - Gartner Peer Insights](https://www.gartner.com/reviews/market/observability-platforms)
+4. [Cloud Native 2024 - Cloud Native Computing Foundation (CNCF Annual Survey)](https://www.cncf.io/wp-content/uploads/2025/04/cncf_annual_survey24_031225a.pdf)
+5. [W3C Recommendation: Trace Context (Level 1 & 2 Specification)](https://www.w3.org/TR/trace-context/)
+6. [OpenTelemetry Project: Specifications, OTLP Protocol & Semantic Conventions](https://opentelemetry.io/)
+7. [What is Observability? Not Just Logs, Metrics, and Traces - Dynatrace](https://www.dynatrace.com/news/blog/what-is-observability-2/)
+8. [The Three Pillars of Observability: Metrics, Logs and Traces - eG Innovations](https://www.eginnovations.com/blog/the-three-pillars-of-observability-metrics-logs-and-traces/)
+9. [Three Pillars of Observability: Logs, Metrics and Traces - IBM Think](https://www.ibm.com/think/insights/observability-pillars)
+10. [What is Continuous Profiling? - Baselime ELI5 Observability Glossary](https://baselime.io/glossary/continuous-profiling)
+11. [What is Continuous Profiling? - Elastic](https://www.elastic.co/what-is/continuous-profiling)
+12. [What is Real User Monitoring (RUM)? - New Relic](https://newrelic.com/blog/best-practices/what-is-real-user-monitoring)
+13. [What is Real User Monitoring (RUM)? - SolarWinds IT Glossary](https://www.solarwinds.com/resources/it-glossary/real-user-monitoring)
 
 ### 12.2 Air-Gapped & Sovereign Cloud Infrastructure
-8. **Amazon Web Services (AWS)**: *Deploy infrastructure for telecom workloads in an air-gapped AWS environment* (Architecture blog on isolated networking).
-9. **Red Hat Developer**: *Simplify OpenShift installation and Day-2 operations in air-gapped environments* (Disconnected mirror registry best practices).
-10. **Grafana Labs (GrafanaCon)**: *Air-gapped observability at the edge: Monitoring distributed air-gapped infrastructures*.
-11. **IBM Community**: *Airgapped installation of Instana Custom Edition (Self-Hosted on Kubernetes/OpenShift)*.
-12. **Planned Link**: *Setting Up Elastic Fleet in Air Gapped Environments (Private Package Registry Architecture)*.
+14. [Deploy Infrastructure for Telecom Workloads in an Air-Gapped AWS Environment - AWS Architecture Blog](https://aws.amazon.com/blogs/industries/deploy-infrastructure-for-telecom-workloads-in-an-air-gapped-aws-environment/)
+15. [Simplify OpenShift Installation in Air-Gapped Environments - Red Hat Developer](https://developers.redhat.com/articles/2025/10/14/simplify-openshift-installation-air-gapped-environments)
+16. [Air-Gapped Observability at the Edge: Monitoring Distributed Air-Gapped Infrastructures - GrafanaCon 2025](https://grafana.com/events/grafanacon/2025/monitor-distributed-air-gapped-infrastructures/)
+17. [Airgapped Installation of Instana Custom Edition - IBM Community](https://community.ibm.com/community/user/blogs/sidharth-s/2025/03/28/airgapped-installation-of-instana-customedition)
+18. [Setting Up Elastic Fleet in Air Gapped Environments - Planned Link](https://plannedlink.io/2025/10/13/deploying-the-elastic-stack-in-an-air-gapped-environment-part-3/)
+19. [ActiveGate Diagnostics & Air-Gapped Operation - Dynatrace Docs](https://docs.dynatrace.com/docs/ingest-from/dynatrace-activegate/activegate-diagnostics)
 
 ### 12.3 Red Hat OpenShift & Kubernetes Observability
-13. **Red Hat Official Blog**: *Custom Grafana dashboards for Red Hat OpenShift Container Platform 4*.
-14. **Red Hat Official Blog**: *Monitoring OpenShift using Zabbix and Prometheus API / Thanos federation*.
-15. **Red Hat Ecosystem Catalog**: Operator certifications for *Dynatrace Operator*, *Elasticsearch (ECK) Operator*, *Instana Agent Operator*, and *AppDynamics ClusterAgent*.
-16. **Checkmk GmbH**: *Enterprise-grade container monitoring with Checkmk* & *Kubernetes Cluster Collector for OpenShift*. [checkmk.com](https://checkmk.com/product/container-monitoring).
-17. **Datadog Documentation**: *Red Hat OpenShift Monitoring with Certified Datadog Operator and Cluster Agent*.
-18. **Hoop.dev Engineering**: *What Elastic Observability OpenShift Actually Does and When to Use It* & *The simplest way to make OpenShift Splunk work like it should*.
-19. **Splunkbase & Outcold Solutions**: *Monitoring OpenShift in Splunk: Certified Metrics, Metadata, and Log Forwarding*.
-20. **Splunk Operator for Kubernetes**: *Red Hat OpenShift Configuration and Deployment Blueprint*.
+20. [Custom Grafana Dashboards for Red Hat OpenShift Container Platform 4 - Red Hat Blog](https://www.redhat.com/fr/blog/custom-grafana-dashboards-red-hat-openshift-container-platform-4)
+21. [Monitoring OpenShift Using Zabbix and Prometheus API - Red Hat Blog](https://www.redhat.com/en/blog/monitoring-openshift-using-zabbix-and-prometheus-api)
+22. [Dynatrace Operator - OperatorHub.io Registry](https://operatorhub.io/operator/dynatrace-operator)
+23. [Deploy and Update Dynatrace Operator on Kubernetes & OpenShift - Dynatrace Docs](https://docs.dynatrace.com/docs/ingest-from/setup-on-k8s/guides/deployment-and-configuration/updates-and-maintenance/update-uninstall-operator)
+24. [Elasticsearch (ECK) Operator - Red Hat Ecosystem Catalog](https://catalog.redhat.com/en/software/container-stacks/detail/5f32f067651c4c0bcecf1bfe)
+25. [What Elastic Observability OpenShift Actually Does and When to Use It - Hoop.dev](https://hoop.dev/blog/what-elastic-observability-openshift-actually-does-and-when-to-use-it/)
+26. [IBM Instana OpenShift Monitoring - IBM Products](https://www.ibm.com/products/instana/supported-technologies/openshift-monitoring)
+27. [Enabling OpenShift Container Platform Monitoring - IBM Cloud Paks](https://www.ibm.com/docs/en/cloud-paks/cp-integration/16.1.0?topic=administering-enabling-openshift-container-platform-monitoring)
+28. [AppDynamics ClusterAgent - Red Hat Ecosystem Catalog](https://catalog.redhat.com/en/software/containers/appdynamics/cluster-agent/5cc19ec569aea3638b0e35fb)
+29. [Overview of Cluster Monitoring with AppDynamics Cluster Agent - Cisco AppDynamics Docs](https://docs.appdynamics.com/appd/24.x/latest/en/infrastructure-visibility/monitor-kubernetes-with-the-cluster-agent/overview-of-cluster-monitoring)
+30. [AppDynamics OpenShift Agents DaemonSet - GitHub](https://github.com/Appdynamics/openshift-agents-daemonset)
+31. [Red Hat OpenShift Monitoring Solutions - Datadog](https://www.datadoghq.com/solutions/openshift/)
+32. [OpenShift Integration Guide - Datadog Docs](https://docs.datadoghq.com/integrations/openshift/)
+33. [OpenShift Engineering Articles & Updates - Datadog Blog](https://www.datadoghq.com/blog/tag/openshift/)
+34. [Red Hat OpenShift Instant Observability - New Relic](https://newrelic.com/instant-observability/red-hat-openshift)
+35. [NewRelic Java Agent Container Image - Red Hat Ecosystem Catalog](https://catalog.redhat.com/en/software/container-stacks/detail/5e9872723f398525a0ceafaf)
+36. [Red Hat OpenShift Configuration with Splunk Operator - Splunk GitHub](https://splunk.github.io/splunk-operator/OpenShift.html)
+37. [Monitoring OpenShift - Metrics and Log Forwarding - Splunkbase](https://splunkbase.splunk.com/app/3836)
+38. [Monitoring OpenShift in Splunk - Outcold Solutions](https://www.outcoldsolutions.com/docs/monitoring-openshift/)
+39. [The Simplest Way to Make OpenShift Splunk Work Like It Should - Hoop.dev](https://hoop.dev/blog/the-simplest-way-to-make-openshift-splunk-work-like-it-should/)
+40. [Enterprise-Grade Container Monitoring with Checkmk - Checkmk](https://checkmk.com/product/container-monitoring)
+41. [Monitoring OpenShift Clusters - Checkmk Docs](https://docs.checkmk.com/latest/en/monitoring_openshift.html)
+42. [Kubernetes: Cluster Collector for OpenShift - Checkmk Integrations](https://checkmk.com/integrations/openshift_queries)
+43. [Grafana Operator for Kubernetes & OpenShift - Grafana Cloud Docs](https://grafana.com/docs/grafana-cloud/developer-resources/infrastructure-as-code/grafana-operator/)
+44. [Zabbix Features & OpenShift Discovery Overview - Zabbix](https://www.zabbix.com/features)
 
-### 12.4 Continuous Profiling & eBPF Deep Diagnostics
-21. **Elastic Observability**: *Universal Profiling — Continuous Profiling that just works via whole-system eBPF*. [elastic.co/observability/universal-profiling](https://www.elastic.co/observability/universal-profiling).
-22. **Datadog Product Architecture**: *Analyze code performance in production with Datadog Continuous Profiler*.
-23. **New Relic Documentation**: *Real-time profiling for Java using Java Flight Recorder (JFR) metrics and Flame Graphs*.
-24. **IBM Instana Documentation**: *AutoProfile™: Continuous automated profiling for Java Virtual Machines (JVM)*.
-25. **Grafana Labs**: *Grafana Pyroscope OSS: Open source continuous profiling platform*.
+### 12.4 Continuous Profiling & eBPF Telemetry
+45. [Universal Profiling: Continuous Profiling via Whole-System eBPF - Elastic](https://www.elastic.co/observability/universal-profiling)
+46. [Analyze Code Performance in Production with Continuous Profiler - Datadog Blog](https://www.datadoghq.com/blog/datadog-continuous-profiler/)
+47. [Continuous Profiler Overview & Flame Graph Analysis - Datadog Product](https://www.datadoghq.com/product/code-profiling/)
+48. [Real-Time Profiling for Java Using JFR Metrics - New Relic Docs](https://docs.newrelic.com/docs/apm/agents/java-agent/features/real-time-profiling-java-using-jfr-metrics/)
+49. [Analyzing Execution Profiles with AutoProfile - IBM Instana Docs](https://www.ibm.com/docs/en/instana-observability/1.0.306?topic=processes-analyzing-profiles)
 
-### 12.5 Real User Monitoring (RUM) & Digital Experience (DEM)
-26. **New Relic Guides**: *What is Real User Monitoring (RUM)? Core Web Vitals, browser hydration, and SPA tracking*.
-27. **SolarWinds IT Glossary**: *Real User Monitoring (RUM) vs. Synthetic Transaction Probing*.
-28. **Grafana Labs**: *Grafana Faro Web SDK for frontend real user monitoring and session tracking*.
+### 12.5 Workload, Messaging & Database Telemetry
+50. [Java Monitoring & Observability - Dynatrace Hub](https://www.dynatrace.com/hub/detail/java/)
+51. [Jakarta Servlet Monitoring & Observability - Dynatrace Hub](https://www.dynatrace.com/hub/detail/jakarta-servlet/)
+52. [Introduction to New Relic for Java - New Relic Docs](https://docs.newrelic.com/docs/apm/agents/java-agent/getting-started/introduction-new-relic-java/)
+53. [Monitoring Java Virtual Machine (JVM) - IBM Instana Docs](https://www.ibm.com/docs/en/instana-observability/1.0.306?topic=technologies-monitoring-java-virtual-machine)
+54. [Monitoring Kafka Queues and Consumer Group Offsets - Datadog Docs](https://docs.datadoghq.com/tracing/guide/monitor-kafka-queues/)
+55. [Kafka Monitoring Extension - Dynatrace Docs](https://docs.dynatrace.com/docs/ingest-from/technology-support/dynatrace-extensions/supported-out-of-the-box/kafka)
+56. [Monitoring Kafka Brokers and Topics - IBM Instana Docs](https://www.ibm.com/docs/en/instana-observability/1.0.307?topic=technologies-monitoring-kafka)
+57. [Kafka Monitoring Integration Guide - New Relic Docs](https://docs.newrelic.com/docs/infrastructure/host-integrations/host-integrations-list/kafka/kafka-integration/)
+58. [How to Monitor Kafka for Free with Elasticsearch - Dattell Architecture Blog](https://dattell.com/data-architecture-blog/kafka-monitoring-with-elasticsearch-and-kibana/)
+59. [How We Monitor and Run Kafka at Scale - Splunk Engineering Blog](https://www.splunk.com/en_us/blog/devops/how-we-monitor-and-run-kafka-at-scale.html)
+60. [Microsoft SQL Server Integration - Elastic Docs](https://www.elastic.co/docs/reference/integrations/microsoft_sqlserver)
+61. [Microsoft SQL Server Database Monitoring (DBM) - Datadog Docs](https://docs.datadoghq.com/integrations/sql-server/)
+62. [Microsoft SQL Server Monitoring Extension - Dynatrace Hub](https://www.dynatrace.com/hub/detail/microsoft-sql-server-2/)
+63. [Microsoft SQL Server Local Counters Monitoring - Dynatrace Hub](https://www.dynatrace.com/hub/detail/microsoft-sql-server-local-counters/)
+64. [Monitoring Microsoft SQL Server - IBM Instana Docs](https://www.ibm.com/docs/en/instana-observability/1.0.305?topic=technologies-monitoring-microsoft-sql-server)
+65. [Set Up MSSQL for Monitoring - Cisco AppDynamics Docs](https://docs.appdynamics.com/observability/cisco-cloud-observability/en/database-monitoring/set-up-database-for-monitoring/set-up-mssql-for-monitoring)
+66. [Monitoring Microsoft SQL Server - Checkmk Docs](https://docs.checkmk.com/latest/en/monitoring_mssql.html)
+67. [Database Monitoring with Checkmk - Checkmk](https://checkmk.com/product/database-monitoring)
+68. [Monitor SQL Server Using Zabbix - SQLServerCentral](https://www.sqlservercentral.com/articles/monitor-sql-server-using-zabbix)
+69. [VMware vSphere Monitoring & Observability - Dynatrace Hub](https://www.dynatrace.com/hub/detail/vmware/)
+70. [vSphere Integration Guide - Datadog Docs](https://docs.datadoghq.com/integrations/vsphere/)
+71. [Monitoring vSphere Clusters - IBM Instana Docs](https://www.ibm.com/docs/en/instana-observability/1.0.307?topic=instana-monitoring-vsphere)
+72. [vSphere Monitoring Integration Guide - New Relic Docs](https://docs.newrelic.com/install/vsphere/)
+73. [Splunk OVA for VMware - Splunkbase](https://splunkbase.splunk.com/app/3216)
+74. [The Complete Guide to Virtual Server Monitoring - Checkmk](https://checkmk.com/guides/virtual-server-monitoring)
+75. [Monitoring VMware vSphere with Zabbix - vMattroman Technical Blog](https://vmattroman.com/monitoring-vmware-vsphere-with-zabbix/)
+76. [prezhdarov/vmware-exporter: VMware vCenter Exporter for Prometheus - GitHub](https://github.com/prezhdarov/vmware-exporter)
 
-### 12.6 Workload, Messaging & Database Telemetry
-29. **Apache Kafka Community**: *Apache Kafka Monitoring & Operations Guide: Broker JMX metrics, Under-Replicated Partitions, and Consumer Lag*.
-30. **Datadog Documentation**: *Monitoring Kafka Queues and Consumer Group Offsets* & *Database Monitoring (DBM) for Microsoft SQL Server*.
-31. **Dynatrace Hub & Documentation**: *Kafka monitoring extension, Java runtime deep monitoring, and ActiveGate SQL Server local counter monitoring*.
-32. **IBM Instana Documentation**: *Monitoring Apache Kafka (Topics, Consumer Groups, Lag)* & *Monitoring Microsoft SQL Server (DMV queries and wait statistics)*.
-33. **Splunk Engineering**: *How We Monitor and Run Kafka at Scale*.
-34. **Checkmk Documentation**: *Monitoring Microsoft SQL Server (Transactions, buffer cache, file sizing)* & *The Complete Guide to Virtual Server (VMware vSphere) Monitoring*.
-35. **VMware vCenter Integration**: *prezhdarov/vmware-exporter: VMware vCenter exporter for Prometheus*. [GitHub](https://github.com/prezhdarov/vmware-exporter).
-36. **SQLServerCentral**: *Monitor Microsoft SQL Server using Zabbix and Performance Counter DMVs*.
-37. **vMattroman**: *Monitoring VMware vSphere clusters and ESXi datastores with Zabbix*.
+### 12.6 Open-Source Stacks & Platform Architectures
+77. [Prometheus Monitoring System & Time Series Database - Prometheus.io](https://prometheus.io/)
+78. [Prometheus Monitoring OSS: Storing Large Amounts of Metrics - Grafana Labs](https://grafana.com/oss/prometheus/)
+79. [Grafana Loki OSS: Log Aggregation System - Grafana Labs](https://grafana.com/oss/loki/)
+80. [Grafana OSS: Leading Observability Tool for Visualizations - Grafana Labs](https://grafana.com/oss/grafana/)
+81. [Elastic Observability Overview & Documentation - Elastic](https://www.elastic.co/docs/solutions/observability)
+82. [Overview of Cluster Monitoring with AppDynamics On-Premises Controller - Splunk Docs](https://help.splunk.com/en/appdynamics-on-premises/infrastructure-visibility/25.10.0/monitor-kubernetes-with-the-cluster-agent/overview-of-cluster-monitoring)
+83. [Infrastructure & Application Monitoring - Checkmk](https://checkmk.com/)
 
-### 12.7 Total Cost of Ownership (TCO) & SRE Economics
-38. **Moray / Valensas**: *We migrated to Grafana's LGTM stack: Here is the story (Operational realities of SRE-managed backends)*.
-39. **SigNoz Comparisons**: *Datadog vs. Zabbix in 2025: Features, Pricing, On-Prem vs. SaaS*.
-40. **Spendflo**: *New Relic Pricing: Ingestion, User Licenses, and Cost Management Guide*.
-41. **TrustRadius**: *IBM Instana Pricing, Licensing Models, and Enterprise TCO Analysis*.
+### 12.7 Total Cost of Ownership (TCO) & Comparative Studies
+84. [We Migrated to Grafana's LGTM Stack: Here Is the Story - Valensas Engineering](https://blog.valensas.com/we-migrated-to-grafanas-lgtm-stack-here-is-the-story-a8190d3a5a3a)
+85. [Datadog vs. Zabbix in 2025: Features, Pricing, On-Prem vs. SaaS - SigNoz](https://signoz.io/comparisons/datadog-vs-zabbix/)
+86. [New Relic Pricing: Plans, Features, and Best Deals Explained - Spendflo](https://www.spendflo.com/blog/new-relic-pricing-guide)
+87. [IBM Instana Pricing 2025: TCO & Licensing Analysis - TrustRadius](https://www.trustradius.com/products/ibm-instana/pricing)
+
 
 
