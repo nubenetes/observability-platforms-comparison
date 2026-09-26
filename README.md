@@ -245,20 +245,35 @@ pie title 3-Year TCO Distribution: Commercial Turnkey (Dynatrace Managed)
 Based on the air-gapped mandate, workload complexity (Java, Kafka, SQL Server), and operational economics, platforms are categorized into strategic decision tiers:
 
 ```mermaid
-graph TD
+flowchart LR
     classDef t1 fill:#1b4d3e,stroke:#2ecc71,stroke-width:2px,color:#fff;
     classDef t2 fill:#1a365d,stroke:#3182ce,stroke-width:2px,color:#fff;
     classDef toss fill:#4a154b,stroke:#e01e5a,stroke-width:2px,color:#fff;
+    classDef out fill:#1e293b,stroke:#475569,stroke-width:1px,color:#f8fafc;
 
-    T1["Tier 1: Primary Enterprise Recommendation<br/><b>Dynatrace Managed</b>"]:::t1
-    T2A["Tier 2 Alternative A<br/><b>Instana Self-Hosted</b>"]:::t2
-    T2B["Tier 2 Alternative B<br/><b>Elastic Stack (ECK)</b>"]:::t2
-    TOSS["Special Strategic Pathway<br/><b>Grafana OSS Stack</b>"]:::toss
+    T1["⭐ <b>Tier 1: Dynatrace Managed</b><br/>• Turnkey OneAgent auto-injection<br/>• Davis® Causal AI root-cause engine<br/>• 100% offline air-gapped parity"]:::t1
 
-    T1 -->|Turnkey Automation, Davis AI, Air-Gapped Parity| Winner["Lowest Risk / Fastest Time-to-Value"]
-    T2A -->|Host-Based Pricing, Unsampled AutoTrace| Alt1["APM-Focused Commercial Alternative"]
-    T2B -->|Unmatched Log Forensic Power, eBPF Profiling| Alt2["Data-Heavy Commercial Alternative"]
-    TOSS -->|Zero Licensing, Standards Alignment| Alt3["Requires Internal SRE Team Commitments"]
+    T2A["🔄 <b>Tier 2A: Instana Self-Hosted</b><br/>• 1-second metric streaming<br/>• Unsampled AutoTrace™ bytecode<br/>• Predictable host-based pricing"]:::t2
+
+    T2B["🔄 <b>Tier 2B: Elastic Stack (ECK)</b><br/>• Forensic log search and Lucene power<br/>• Whole-system eBPF profiling<br/>• Kubernetes-native ECK operator"]:::t2
+
+    TOSS["🛠️ <b>Strategic: Grafana OSS Stack</b><br/>• Zero software licensing fees<br/>• 100% OpenTelemetry and CNCF native<br/>• Modular LGTM + Pyroscope stack"]:::toss
+
+    O1["🏆 <b>Lowest Operational Risk</b><br/>Fastest time-to-value for mission-critical<br/>Java, Kafka and SQL Server fleets"]:::out
+
+    O2A["⚡ <b>APM-Centric Alternative</b><br/>Real-time 1s resolution; strong fallback<br/>if host licensing is preferred"]:::out
+
+    O2B["🔍 <b>Data-Heavy Alternative</b><br/>Exceptional for log analytics; demands<br/>in-house Elasticsearch expertise"]:::out
+
+    O3["⚠️ <b>High SRE Platform Burden</b><br/>Zero license cost, but requires dedicated<br/>internal team of 4–6 SRE FTEs"]:::out
+
+    T1 -->|Turnkey and Air-Gap Parity| O1
+    T2A -->|Host Pricing and AutoTrace| O2A
+    T2B -->|Log Forensics and eBPF| O2B
+    TOSS -->|Standards and Zero License| O3
+
+    T1 ~~~ T2A ~~~ T2B ~~~ TOSS
+    O1 ~~~ O2A ~~~ O2B ~~~ O3
 ```
 
 ### 1. Tier 1 (Primary Recommendation): Dynatrace Managed
