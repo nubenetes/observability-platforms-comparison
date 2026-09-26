@@ -50,13 +50,19 @@ A truly air-gapped system operates with zero outbound internet connectivity. Thi
 2. **Disqualified Platforms (Pure SaaS)**: Platforms such as **Datadog**, **New Relic**, and **Grafana Cloud** that require continuous HTTPS telemetry egress to public cloud endpoints.
 
 ```mermaid
-graph TD
-    Market["Enterprise Observability Market (12 Platforms)"]
-    Market --> AirGapFilter{"Air-Gapped Enclave Filter<br/>(Zero Internet Egress)"}
-    
-    AirGapFilter -->|Incompatible: Pure SaaS| GroupB["Disqualified as Unified Platform<br/>• Datadog<br/>• New Relic<br/>• Grafana Cloud"]
-    
-    AirGapFilter -->|Compatible: Self-Hosted / On-Prem| GroupA["Viable Candidates<br/>• Dynatrace Managed<br/>• Instana Self-Hosted<br/>• Elastic Stack (ECK)<br/>• Splunk Enterprise<br/>• Cisco AppDynamics<br/>• Checkmk (+ ntopng)<br/>• Grafana OSS (LGTM)<br/>• Zabbix<br/>• OCP Native (Prom/Loki)"]
+flowchart TD
+    Market["Enterprise Observability Market<br/>(12 Evaluated Platforms)"]
+    Filter{"Air-Gapped Constraint<br/>Zero External Egress"}
+
+    Market --> Filter
+
+    Filter -->|Requires Public Egress| Disqualified["Disqualified (Pure SaaS)<br/><br/>• Datadog<br/>• New Relic<br/>• Grafana Cloud"]
+
+    Filter -->|100% Offline Capable| Viable["Viable Architectures<br/>(Self-Hosted / On-Premises)"]
+
+    Viable --> Comm["Commercial Enterprise<br/><br/>• Dynatrace Managed<br/>• Instana Self-Hosted<br/>• Elastic Stack (ECK)<br/>• Splunk Enterprise<br/>• Cisco AppDynamics<br/>• Checkmk (+ ntopng)"]
+
+    Viable --> OSS["Open Source (Self-Hosted)<br/><br/>• Grafana OSS (LGTM)<br/>• OCP Native (Prom/Loki)<br/>• Zabbix"]
 ```
 
 ### The "Swivel-Chair" Anti-Pattern (The Two-Tool Fallacy)
