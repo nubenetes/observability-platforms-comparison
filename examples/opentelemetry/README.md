@@ -39,8 +39,8 @@ graph TD
         BackendC["Grafana Tempo & Mimir"]
     end
 
-    JavaApp -->|OTLP gRPC (Port 4317)| OTelGW
-    Kafka -.->|JMX & Metadata Scraping| OTelGW
+    JavaApp -->|OTLP gRPC Port 4317| OTelGW
+    Kafka -.->|JMX and Metadata Scraping| OTelGW
     MSSQL -.->|DMV SQL Query Polling| OTelGW
 
     BatchProc -->|Export OTLP| BackendA

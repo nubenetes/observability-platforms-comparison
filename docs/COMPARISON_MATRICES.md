@@ -58,19 +58,19 @@ Platforms differ fundamentally based on their historical engineering genesis:
 
 ```mermaid
 quadrantChart
-    title Observability Platform Landscape (Telemetry Depth vs Operational Automation)
-    x-axis Low Operational Automation (DIY / High SRE Overhead) --> High Operational Automation (Turnkey / AI)
-    y-axis Infrastructure-Centric Monitoring --> Deep Application & Code Observability
-    quadrant-1 Turnkey Application Leaders
-    quadrant-2 DIY Open-Source Powerhouses
-    quadrant-3 Traditional Infrastructure Legacy
-    quadrant-4 Enterprise Hybrid Engines
+    title "Observability Platform Landscape: Depth vs Automation"
+    x-axis "Low Operational Automation" --> "High Operational Automation"
+    y-axis "Infrastructure-Centric" --> "Deep Application and Code Observability"
+    quadrant-1 "Turnkey Application Leaders"
+    quadrant-2 "DIY Open-Source Powerhouses"
+    quadrant-3 "Traditional Infrastructure Legacy"
+    quadrant-4 "Enterprise Hybrid Engines"
     "Checkmk": [0.35, 0.20]
     "Zabbix": [0.25, 0.25]
-    "OCP Native (Prom/Loki)": [0.20, 0.45]
-    "Grafana OSS Stack": [0.15, 0.70]
-    "Elastic Stack (ECK)": [0.45, 0.65]
-    "Splunk Enterprise": [0.50, 0.55]
+    "OCP Native": [0.20, 0.45]
+    "Grafana OSS": [0.15, 0.70]
+    "Elastic ECK": [0.45, 0.65]
+    "Splunk": [0.50, 0.55]
     "AppDynamics": [0.65, 0.80]
     "Instana": [0.85, 0.88]
     "Dynatrace Managed": [0.92, 0.95]

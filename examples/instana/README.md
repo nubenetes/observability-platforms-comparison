@@ -36,9 +36,9 @@ graph TD
     end
 
     AgentDS -->|Internal TLS Push| InstanaBackend
-    AgentDS -->|Kafka Sensor (JMX & Offsets)| KafkaCluster
-    AgentDS -->|SQL Server Sensor (DMV Metrics)| SQLServer
-    AgentDS -->|vCenter Sensor (SOAP API)| vSphere
+    AgentDS -->|Kafka Sensor: JMX and Offsets| KafkaCluster
+    AgentDS -->|SQL Server Sensor: DMV Metrics| SQLServer
+    AgentDS -->|vCenter Sensor: SOAP API| vSphere
 ```
 
 ---
