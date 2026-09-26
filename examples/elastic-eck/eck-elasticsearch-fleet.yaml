@@ -1,0 +1,50 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elasticsearch-airgap
+  namespace: elastic-system
+spec:
+  version: 8.15.0
+  image: registry.internal.corp/elastic/elasticsearch:8.15.0
+  nodeSets:
+  - name: master-data-nodes
+    count: 3
+    config:
+      node.store.allow_mmap: false
+      xpack.security.enabled: true
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch
+          resources:
+            requests:
+              memory: 8Gi
+              cpu: 4000m
+            limits:
+              memory: 16Gi
+              cpu: 8000m
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 200Gi
+        storageClassName: ocs-storagecluster-ceph-rbd
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: kibana-airgap
+  namespace: elastic-system
+spec:
+  version: 8.15.0
+  image: registry.internal.corp/elastic/kibana:8.15.0
+  count: 2
+  elasticsearchRef:
+    name: elasticsearch-airgap
+  config:
+    # Air-gapped Fleet package registry pointing to internal server
+    xpack.fleet.registryUrl: "https://package-registry.internal.corp"

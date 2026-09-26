@@ -1,0 +1,64 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otel-collector-hybrid
+  namespace: observability-system
+spec:
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+
+      # Apache Kafka Metrics Receiver
+      kafkametrics:
+        brokers:
+          - "kafka-broker-1.internal.corp:9092"
+          - "kafka-broker-2.internal.corp:9092"
+          - "kafka-broker-3.internal.corp:9092"
+        protocol_version: 3.4.0
+        scrapers:
+          - brokers
+          - topics
+          - consumers
+
+      # Microsoft SQL Server Receiver
+      sqlquery/mssql:
+        driver: sqlserver
+        datasource: "sqlserver://sa:SecretPass123@sqlserver.internal.corp:1433?database=master"
+        queries:
+          - sql: "SELECT wait_type, waiting_tasks_count, wait_time_ms FROM sys.dm_os_wait_stats WHERE wait_time_ms > 1000;"
+            metrics:
+              - metric_name: sqlserver.wait_stats
+                value_column: wait_time_ms
+                attribute_columns: [wait_type]
+
+    processors:
+      batch:
+        timeout: 1s
+        send_batch_size: 1024
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 80
+        spike_limit_percentage: 20
+
+    exporters:
+      # Export to internal on-premises backend
+      otlp/internal:
+        endpoint: "observability-backend.internal.corp:4317"
+        tls:
+          insecure: true
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [memory_limiter, batch]
+          exporters: [otlp/internal]
+        metrics:
+          receivers: [otlp, kafkametrics, sqlquery/mssql]
+          processors: [memory_limiter, batch]
+          exporters: [otlp/internal]

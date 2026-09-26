@@ -1,0 +1,42 @@
+apiVersion: dynatrace.com/v1beta1
+kind: DynaKube
+metadata:
+  name: dynakube-airgap
+  namespace: dynatrace
+  annotations:
+    feature.dynatrace.com/max-failed-marker-attempts: "3"
+spec:
+  # In an air-gapped sovereign cloud, apiUrl points to an internal ActiveGate endpoint
+  apiUrl: https://activegate.internal.corp:9999/e/internal-environment-id/api/v1
+  
+  # Reference to the local enterprise registry credentials
+  customPullSecret: enterprise-registry-pull-secret
+
+  # Enable oneAgent in CloudNativeFullStack mode for OpenShift
+  oneAgent:
+    cloudNativeFullStack:
+      image: registry.internal.corp/dynatrace/oneagent:latest
+      autoUpdate: false
+      tolerations:
+        - effect: NoSchedule
+          operator: Exists
+        - effect: NoExecute
+          operator: Exists
+      args:
+        - --set-host-group=openshift-airgap-prod
+        - --set-network-zone=internal-sovereign-zone
+
+  # In-cluster ActiveGate for proxying telemetry and monitoring the OpenShift API
+  activeGate:
+    image: registry.internal.corp/dynatrace/activegate:latest
+    capabilities:
+      - routing
+      - kubernetes-monitoring
+      - dynatrace-api
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1Gi
+      limits:
+        cpu: 1000m
+        memory: 2Gi

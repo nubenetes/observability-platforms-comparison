@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alloy-config
+  namespace: observability-oss
+data:
+  config.alloy: |
+    // ---------------------------------------------------------
+    // Grafana Alloy Pipeline for OpenShift & Hybrid Telemetry
+    // ---------------------------------------------------------
+
+    // 1. Kubernetes Pod Log Ingestion (Pillar 2)
+    discovery.kubernetes "pods" {
+      role = "pod"
+    }
+
+    loki.source.kubernetes "pod_logs" {
+      targets    = discovery.kubernetes.pods.targets
+      forward_to = [loki.write.internal.receiver]
+    }
+
+    loki.write "internal" {
+      endpoint {
+        url = "http://loki-gateway.observability-oss.svc:3100/loki/api/v1/push"
+      }
+    }
+
+    // 2. OpenTelemetry Tracing Receiver (Pillar 3)
+    otelcol.receiver.otlp "default" {
+      grpc {
+        endpoint = "0.0.0.0:4317"
+      }
+      http {
+        endpoint = "0.0.0.0:4318"
+      }
+      output {
+        traces  = [otelcol.exporter.otlp.tempo.input]
+        metrics = [otelcol.exporter.prometheus.mimir.input]
+      }
+    }
+
+    otelcol.exporter.otlp "tempo" {
+      client {
+        endpoint = "tempo-distributor.observability-oss.svc:4317"
+        tls {
+          insecure = true
+        }
+      }
+    }
+
+    otelcol.exporter.prometheus "mimir" {
+      forward_to = [prometheus.remote_write.mimir.receiver]
+    }
+
+    prometheus.remote_write "mimir" {
+      endpoint {
+        url = "http://mimir-distributor.observability-oss.svc:8080/api/v1/push"
+      }
+    }
+
+    // 3. Continuous Profiling Receiver (Pillar 4)
+    pyroscope.write "internal" {
+      endpoint {
+        url = "http://pyroscope.observability-oss.svc:4040"
+      }
+    }
