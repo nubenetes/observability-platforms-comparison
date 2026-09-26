@@ -8,6 +8,7 @@
 [![Air--Gapped](https://img.shields.io/badge/Security-Air--Gapped_Compliant-success.svg)](docs/ARCHITECTURE_AND_AIRGAP.md)
 [![CNCF Graduated](https://img.shields.io/badge/CNCF-Graduated%20Telemetry-238636.svg?logo=cncf&logoColor=white)](https://www.cncf.io/)
 [![Gartner MQ](https://img.shields.io/badge/Gartner-Magic_Quadrant_2025-blue.svg)](https://www.gartner.com/)
+[![Release](https://img.shields.io/github/v/release/nubenetes/observability-platforms-comparison?color=blue&label=Release)](https://github.com/nubenetes/observability-platforms-comparison/releases/latest)
 [![YouTube Channel](https://img.shields.io/badge/YouTube-@nubenetes-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@nubenetes)
 
 ---
