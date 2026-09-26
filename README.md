@@ -251,28 +251,33 @@ flowchart TD
     classDef toss fill:#3b123d,stroke:#ec4899,stroke-width:2px,color:#fff;
     classDef out fill:#161b22,stroke:#30363d,stroke-width:1px,color:#c9d1d9;
 
-    subgraph T1_Box [" ⭐ TIER 1: PRIMARY ENTERPRISE RECOMMENDATION "]
-        T1["<b>Dynatrace Managed</b><br/>• Turnkey OneAgent auto-injection on OpenShift<br/>• Davis® Causal AI automated root-cause detection<br/>• 100% offline air-gapped feature parity"]:::t1
-        O1["<b>Lowest Risk and Fastest Time-to-Value</b><br/>Zero-configuration topology mapping for Java, Kafka and SQL Server"]:::out
+    subgraph T1_Box [" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIER 1: PRIMARY ENTERPRISE RECOMMENDATION &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "]
+        direction TB
+        T1["<b>Dynatrace Managed</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Turnkey OneAgent auto-injection on OpenShift &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Davis® Causal AI automated root-cause detection &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• 100% offline air-gapped feature parity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::t1
+        O1["<b>Lowest Risk and Fastest Time-to-Value</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Zero-configuration topology mapping for Java, Kafka and SQL Server &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
         T1 --> O1
     end
 
-    subgraph T2_Box [" 🔄 TIER 2: VIABLE COMMERCIAL ALTERNATIVES "]
-        subgraph T2A_Box ["APM-Centric Alternative"]
-            T2A["<b>Instana Self-Hosted</b><br/>• 1-second metric streaming<br/>• Unsampled AutoTrace™ bytecode<br/>• Predictable host-based pricing"]:::t2
-            O2A["<b>Direct Dynatrace Alternative</b><br/>Evaluate if host pricing is preferred"]:::out
+    subgraph T2_Box [" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIER 2: VIABLE COMMERCIAL ALTERNATIVES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "]
+        direction TB
+        subgraph T2A_Box [" &nbsp;&nbsp;&nbsp; APM-Centric Focus &nbsp;&nbsp;&nbsp; "]
+            direction TB
+            T2A["<b>Instana Self-Hosted</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• 1-second metric streaming resolution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Unsampled AutoTrace™ bytecode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Predictable host-based licensing &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::t2
+            O2A["<b>Direct Dynatrace Alternative</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Evaluate if host-based pricing is preferred &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
             T2A --> O2A
         end
-        subgraph T2B_Box ["Log-Centric Alternative"]
-            T2B["<b>Elastic Stack (ECK)</b><br/>• Forensic log search and Lucene power<br/>• Whole-system eBPF profiling<br/>• Kubernetes-native ECK operator"]:::t2
-            O2B["<b>Data-Heavy Alternative</b><br/>Evaluate if log search is primary"]:::out
+        subgraph T2B_Box [" &nbsp;&nbsp;&nbsp; Log-Centric Focus &nbsp;&nbsp;&nbsp; "]
+            direction TB
+            T2B["<b>Elastic Stack (ECK)</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Forensic log search and Lucene power &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Whole-system eBPF profiling &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Kubernetes-native ECK operator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::t2
+            O2B["<b>Data-Heavy Alternative</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Evaluate if log search is the primary driver &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
             T2B --> O2B
         end
     end
 
-    subgraph TOSS_Box [" 🛠️ SPECIAL STRATEGIC PATHWAY (OPEN SOURCE) "]
-        TOSS["<b>Grafana OSS Stack (LGTM + Pyroscope)</b><br/>• Zero software licensing fees • 100% CNCF / OpenTelemetry native<br/>• Modular best-of-breed telemetry stack with total architectural control"]:::toss
-        O3["<b>High Internal SRE Commitment</b><br/>Requires dedicated in-house team of 4–6 platform SRE FTEs for maintenance and scaling"]:::out
+    subgraph TOSS_Box [" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPECIAL STRATEGIC PATHWAY (OPEN SOURCE) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "]
+        direction TB
+        TOSS["<b>Grafana OSS Stack (LGTM + Pyroscope)</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Zero software licensing fees • 100% CNCF / OpenTelemetry native &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>• Modular best-of-breed telemetry stack with total architectural control &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::toss
+        O3["<b>High Internal SRE Commitment</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>Requires dedicated in-house team of 4–6 platform SRE FTEs for maintenance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::out
         TOSS --> O3
     end
 
