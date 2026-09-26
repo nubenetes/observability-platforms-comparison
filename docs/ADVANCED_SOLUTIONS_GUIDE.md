@@ -12,6 +12,14 @@
 > 
 > All code snippets, JVM settings, container images, and database queries must be independently reviewed, audited, and tested in dedicated non-production environments before any live implementation.
 
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ PoC & Implementation Roadmap](POC_EXECUTION_GUIDE.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [The 7 Pillars of Observability ➡️](THE_7_PILLARS.md) |
+
+---
+
 This document provides a comprehensive technical walkthrough of the advanced solutions, reference code, proof-of-concept (PoC) templates, and chaos injection suites included in this repository. 
 
 All solutions are designed for **Red Hat OpenShift 4.18+**, **hybrid VMware vSphere** environments, and **strictly air-gapped** networks.
@@ -234,3 +242,10 @@ sqlcmd -S sqlserver.internal.corp -U sa -P 'SecretPass123' -i examples/chaos-fau
 | **Grafana Alloy** | [`examples/grafana-lgtm/grafana-alloy-lgtm-stack.yaml`](file:///home/inaki/github/observability-platforms-comparison/examples/grafana-lgtm/grafana-alloy-lgtm-stack.yaml) | Unified Alloy pipeline configuration for Mimir, Loki, Tempo, and Pyroscope. |
 | **7-Pillars Dashboard**| [`examples/grafana-lgtm/dashboards/enterprise-overview.json`](file:///home/inaki/github/observability-platforms-comparison/examples/grafana-lgtm/dashboards/enterprise-overview.json) | Complete production Grafana dashboard JSON across all 7 pillars. |
 | **OTel Collector** | [`examples/opentelemetry/otel-collector-kafka-sql.yaml`](file:///home/inaki/github/observability-platforms-comparison/examples/opentelemetry/otel-collector-kafka-sql.yaml) | Vendor-neutral OpenTelemetry Collector with Kafka metrics and SQL Server DMV querying. |
+
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ PoC & Implementation Roadmap](POC_EXECUTION_GUIDE.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [The 7 Pillars of Observability ➡️](THE_7_PILLARS.md) |
+

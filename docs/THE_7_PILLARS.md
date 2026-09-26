@@ -10,6 +10,14 @@
 > 
 > It serves as an architectural conceptual guide. All telemetry configurations and protocols must be verified in staging environments before production deployment.
 
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ Overview & Executive Summary](../README.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [Hybrid Cloud & Air-Gapped Architecture ➡️](ARCHITECTURE_AND_AIRGAP.md) |
+
+---
+
 Observability is the ability to infer the internal states of a complex system based on the external outputs (telemetry) it emits. While classical monitoring asks predefined questions about known failure modes (*"Is the CPU above 90%?"* or *"Is the HTTP 500 rate elevated?"*), true observability empowers engineering and operations teams to diagnose unprecedented problems—the **"unknown unknowns"**—without having to modify or redeploy code.
 
 For years, the industry relied on the **"Three Pillars"** (Metrics, Logs, Traces). However, in high-density Kubernetes/OpenShift architectures, asynchronous event-driven pipelines (Kafka), polyglot microservices, and air-gapped secure enclaves, these three signals leave critical visibility blind spots. 
@@ -201,3 +209,10 @@ True observability is achieved not by purchasing point tools for each pillar, bu
 | **Pillar 6 (Network eBPF)** | TCP reset spike between ingress proxy and order microservice | Confirms connection termination due to client timeout before response completed. |
 | **Pillar 5 (RUM)** | Frontend Core Web Vital (INP) spikes to 4.8s for users clicking "Confirm Order" | Measures the actual user impact and business disruption caused by the bug. |
 | **Pillar 7 (Security & AIOps)** | Causal engine suppresses 85 downstream alerts and opens 1 prioritized incident | Eliminates alert fatigue and directs the on-call engineer directly to the regex issue. |
+
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ Overview & Executive Summary](../README.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [Hybrid Cloud & Air-Gapped Architecture ➡️](ARCHITECTURE_AND_AIRGAP.md) |
+

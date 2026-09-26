@@ -10,6 +10,14 @@
 > 
 > All chaos test scripts, SQL queries, and load testing parameters must be audited by DBAs and SREs and executed only in non-production staging environments.
 
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ Comparison Matrices](COMPARISON_MATRICES.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [Advanced Solutions & Code Guide ➡️](ADVANCED_SOLUTIONS_GUIDE.md) |
+
+---
+
 This guide defines the practical, measurable framework for validating candidate observability platforms in an enterprise hybrid cloud and air-gapped OpenShift environment. It establishes a **3-Phase Implementation Roadmap** and an exhaustive **4–6 Week Proof-of-Concept (PoC)** plan with quantitative criteria and diagnostic test scenarios.
 
 ---
@@ -133,3 +141,10 @@ Each candidate platform is scored across the 5 criteria using a weighted matrix:
 | **AIOps Causal Root-Cause Usability** | 10% | 10 / 10 | 9 / 10 | 8 / 10 | 5 / 10 |
 | **SRE Operational Overhead (Inverse)** | 10% | 9.5 / 10 | 9 / 10 | 6.5 / 10 | 3 / 10 |
 | **Weighted Score (Out of 10)** | **100%** | **9.78** | **9.38** | **8.18** | **7.10** |
+
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ Comparison Matrices](COMPARISON_MATRICES.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [Advanced Solutions & Code Guide ➡️](ADVANCED_SOLUTIONS_GUIDE.md) |
+

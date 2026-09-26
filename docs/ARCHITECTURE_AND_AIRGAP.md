@@ -10,6 +10,14 @@
 > 
 > All network isolation boundaries, OLM catalog mirror commands, and proxy architectures must be validated in staging environments before implementation.
 
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ The 7 Pillars of Observability](THE_7_PILLARS.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [12-Platform Deep-Dive Evaluation ➡️](PLATFORM_EVALUATION_DEEP_DIVE.md) |
+
+---
+
 ## 1. Executive Summary & Topological Overview
 
 Modern enterprise IT operating in regulated industries (financial services, telecommunications, healthcare, and public administration) is fundamentally characterized by **hybrid topology** and **strict network isolation**.
@@ -148,3 +156,10 @@ In air-gapped clusters with high pod density, individual worker node agents shou
 ### 3. Offline Licensing & Version Upgrades
 - License validation must operate via **offline license keys, self-contained digital certificates, or local activation files** transferred via secure bastions (sneakernet).
 - Upgrade packages must be distributed as signed tarball bundles or mirrored container images.
+
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ The 7 Pillars of Observability](THE_7_PILLARS.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [12-Platform Deep-Dive Evaluation ➡️](PLATFORM_EVALUATION_DEEP_DIVE.md) |
+

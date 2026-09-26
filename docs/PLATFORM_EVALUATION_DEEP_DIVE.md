@@ -10,6 +10,14 @@
 > 
 > Platform capabilities, pricing structures, and operator behaviors reflect architectural research and must be independently verified with vendors and tested in enterprise proof-of-concept sandboxes.
 
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ Air-Gapped Architecture](ARCHITECTURE_AND_AIRGAP.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [7-Pillars Comparison Matrices ➡️](COMPARISON_MATRICES.md) |
+
+---
+
 This document presents a comprehensive architectural and operational evaluation of **12 market-leading observability platforms**. Each platform is analyzed across its architecture, air-gapped viability, depth across the **7 Pillars of Observability**, hybrid infrastructure support (VMware vSphere, Microsoft SQL Server, Apache Kafka), and Total Cost of Ownership (TCO).
 
 ---
@@ -359,3 +367,10 @@ Enterprise-class open-source infrastructure monitoring system. Operates using a 
 ### 12.5 Strategic Verdict & TCO
 - **TCO Profile**: Zero software license fees; moderate operational maintenance.
 - **Verdict**: Like Checkmk, Zabbix is a proven infrastructure monitoring tool that excels at bare metal, network devices, and VMs. However, it is **ill-suited as an application observability platform for containerized Java microservices on OpenShift**.
+
+---
+
+| ⬅️ Previous | 🏠 Overview | Next ➡️ |
+| :--- | :---: | ---: |
+| [⬅️ Air-Gapped Architecture](ARCHITECTURE_AND_AIRGAP.md) | [📚 Document Index](../README.md#11-repository-documentation--advanced-solutions-map) | [7-Pillars Comparison Matrices ➡️](COMPARISON_MATRICES.md) |
+
