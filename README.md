@@ -207,7 +207,7 @@ While tools like **Checkmk** and **Zabbix** are exceptional for bare-metal, swit
 
 A common enterprise trap is assuming Open Source software (OSS) is "free":
 
-$$\text{TCO} = \text{Direct License Cost} + \text{Infrastructure / Storage Compute} + \text{SRE Headcount \& Maintenance} + \text{MTTR Business Impact}$$
+$$\text{TCO} = \text{Direct License Cost} + \text{Infrastructure / Storage Compute} + \text{SRE Headcount and Maintenance} + \text{MTTR Business Impact}$$
 
 ```mermaid
 pie title 3-Year TCO Distribution: Open Source DIY (Grafana OSS)
