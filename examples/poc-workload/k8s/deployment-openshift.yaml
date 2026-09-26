@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: core-order-microservice
+  namespace: enterprise-workloads
+  labels:
+    app.kubernetes.io/name: core-order-microservice
+    app.kubernetes.io/part-of: enterprise-core-platform
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: core-order-microservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: core-order-microservice
+      annotations:
+        # Automated APM Injection triggers for evaluated platforms
+        oneagent.dynatrace.com/injection: "true"
+        instana.io/autotrace: "true"
+        instrumentation.opentelemetry.io/inject-java: "true"
+        # Prometheus Metrics Scraping
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/actuator/prometheus"
+    spec:
+      containers:
+      - name: microservice
+        image: registry.internal.corp/enterprise/core-order-microservice:1.0.0
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "openshift-airgap"
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka-cluster-kafka-bootstrap.enterprise-messaging.svc:9092"
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:sqlserver://sqlserver.internal.corp:1433;databaseName=EnterpriseCore;encrypt=false"
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: sqlserver-credentials
+              key: username
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: sqlserver-credentials
+              key: password
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1024Mi
+          limits:
+            cpu: 1000m
+            memory: 1536Mi
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-order-microservice
+  namespace: enterprise-workloads
+  labels:
+    app.kubernetes.io/name: core-order-microservice
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: http
+  selector:
+    app.kubernetes.io/name: core-order-microservice
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: core-order-microservice
+  namespace: enterprise-workloads
+spec:
+  to:
+    kind: Service
+    name: core-order-microservice
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: core-order-microservice-monitor
+  namespace: enterprise-workloads
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: core-order-microservice
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 15s

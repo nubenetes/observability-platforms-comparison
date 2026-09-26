@@ -297,11 +297,19 @@ flowchart LR
 
 ---
 
-## 11. Repository Documentation Map
+## 11. Repository Documentation & Advanced Solutions Map
 
+- **[docs/ADVANCED_SOLUTIONS_GUIDE.md](docs/ADVANCED_SOLUTIONS_GUIDE.md)**: **Master Technical Implementation Guide** explaining the complete Java 21 microservice workload, W3C Kafka trace injection, diagnostic chaos suites, and platform manifests.
 - **[docs/THE_7_PILLARS.md](docs/THE_7_PILLARS.md)**: Deep technical breakdown of all 7 pillars, telemetry protocols (OTLP), and correlation matrices.
 - **[docs/ARCHITECTURE_AND_AIRGAP.md](docs/ARCHITECTURE_AND_AIRGAP.md)**: Sovereign air-gapped enclave architecture, OLM offline mirroring, and proxy gateway mechanics.
 - **[docs/PLATFORM_EVALUATION_DEEP_DIVE.md](docs/PLATFORM_EVALUATION_DEEP_DIVE.md)**: Exhaustive evaluations of each of the 12 platforms.
 - **[docs/COMPARISON_MATRICES.md](docs/COMPARISON_MATRICES.md)**: The 7-Pillars Matrix, TCO comparison tables, and compliance checklists.
 - **[docs/POC_EXECUTION_GUIDE.md](docs/POC_EXECUTION_GUIDE.md)**: 4–6 week evaluation plan, failure injection scenarios, and scoring rubrics.
-- **[examples/](examples/)**: Reference OpenShift manifests and configurations for Dynatrace, Instana, Elastic ECK, Grafana Alloy, and OpenTelemetry.
+- **[examples/poc-workload/](examples/poc-workload/)**: Production-grade Spring Boot 3 / Java 21 microservice with W3C Kafka header propagation, JFR continuous profiling events, and SQL Server queries.
+- **[examples/chaos-fault-injection/](examples/chaos-fault-injection/)**: Automated failure scripts simulating Kafka consumer lag, SQL Server exclusive locks, and CPU/thread contention.
+- **[examples/dynatrace/](examples/dynatrace/)**: Air-gapped Dynatrace Managed DynaKube CR, ActiveGate routing, and SQL Server DMV monitoring extension.
+- **[examples/instana/](examples/instana/)**: Instana Agent DaemonSet with AutoTrace mutating webhook for zero-touch Java bytecode injection.
+- **[examples/elastic-eck/](examples/elastic-eck/)**: Elastic Cloud on Kubernetes (ECK) offline cluster with Fleet Server and whole-system eBPF Universal Profiling.
+- **[examples/grafana-lgtm/](examples/grafana-lgtm/)**: Grafana Alloy unified pipeline, LGTM + Pyroscope stack, and enterprise 7-pillars dashboard JSON.
+- **[examples/opentelemetry/](examples/opentelemetry/)**: Vendor-neutral OpenTelemetry Collector gateway with Kafka metrics and SQL Server DMV receivers.
+

@@ -1,0 +1,44 @@
+# Advanced Dynatrace ActiveGate SQL Server Monitoring Extension
+# Enables deep wait-state analysis, execution plan capture, and trace-to-query correlation
+name: custom:com.dynatrace.extension.sqlserver-enterprise
+version: 1.0.0
+minDynatraceVersion: "1.280"
+author:
+  name: Enterprise Platform Engineering
+
+dashboards:
+  - path: dashboards/sqlserver_overview.json
+
+topology:
+  types:
+    - name: sqlserver:database_instance
+      displayName: Enterprise SQL Server Instance
+      rules:
+        - idPattern: sqlserver_inst_{instance_name}
+          sources:
+            - data: endpoint.name
+              type: attribute
+
+metrics:
+  - id: custom.sqlserver.wait_stats.wait_time_ms
+    type: count
+    unit: MilliSecond
+    displayName: SQL Server Wait Time
+  - id: custom.sqlserver.buffer_cache_hit_ratio
+    type: gauge
+    unit: Percent
+    displayName: Buffer Cache Hit Ratio
+
+sqlServer:
+  - group: PerformanceMetrics
+    interval: 1m
+    query: |
+      SELECT 
+        wait_type,
+        waiting_tasks_count,
+        wait_time_ms,
+        max_wait_time_ms,
+        signal_wait_time_ms
+      FROM sys.dm_os_wait_stats
+      WHERE wait_time_ms > 500
+        AND wait_type NOT IN ('DIRTY_PAGE_POLL', 'HADR_FILESTREAM_IOMGR_FLUSH', 'LAZYWRITER_SLEEP');
