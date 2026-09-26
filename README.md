@@ -245,35 +245,39 @@ pie title 3-Year TCO Distribution: Commercial Turnkey (Dynatrace Managed)
 Based on the air-gapped mandate, workload complexity (Java, Kafka, SQL Server), and operational economics, platforms are categorized into strategic decision tiers:
 
 ```mermaid
-flowchart LR
-    classDef t1 fill:#1b4d3e,stroke:#2ecc71,stroke-width:2px,color:#fff;
-    classDef t2 fill:#1a365d,stroke:#3182ce,stroke-width:2px,color:#fff;
-    classDef toss fill:#4a154b,stroke:#e01e5a,stroke-width:2px,color:#fff;
-    classDef out fill:#1e293b,stroke:#475569,stroke-width:1px,color:#f8fafc;
+flowchart TD
+    classDef t1 fill:#143d30,stroke:#2ecc71,stroke-width:2px,color:#fff;
+    classDef t2 fill:#14294d,stroke:#3b82f6,stroke-width:2px,color:#fff;
+    classDef toss fill:#3b123d,stroke:#ec4899,stroke-width:2px,color:#fff;
+    classDef out fill:#161b22,stroke:#30363d,stroke-width:1px,color:#c9d1d9;
 
-    T1["⭐ <b>Tier 1: Dynatrace Managed</b><br/>• Turnkey OneAgent auto-injection<br/>• Davis® Causal AI root-cause engine<br/>• 100% offline air-gapped parity"]:::t1
+    subgraph T1_Box [" ⭐ TIER 1: PRIMARY ENTERPRISE RECOMMENDATION "]
+        T1["<b>Dynatrace Managed</b><br/>• Turnkey OneAgent auto-injection on OpenShift<br/>• Davis® Causal AI automated root-cause detection<br/>• 100% offline air-gapped feature parity"]:::t1
+        O1["<b>Lowest Risk and Fastest Time-to-Value</b><br/>Zero-configuration topology mapping for Java, Kafka and SQL Server"]:::out
+        T1 --> O1
+    end
 
-    T2A["🔄 <b>Tier 2A: Instana Self-Hosted</b><br/>• 1-second metric streaming<br/>• Unsampled AutoTrace™ bytecode<br/>• Predictable host-based pricing"]:::t2
+    subgraph T2_Box [" 🔄 TIER 2: VIABLE COMMERCIAL ALTERNATIVES "]
+        subgraph T2A_Box ["APM-Centric Alternative"]
+            T2A["<b>Instana Self-Hosted</b><br/>• 1-second metric streaming<br/>• Unsampled AutoTrace™ bytecode<br/>• Predictable host-based pricing"]:::t2
+            O2A["<b>Direct Dynatrace Alternative</b><br/>Evaluate if host pricing is preferred"]:::out
+            T2A --> O2A
+        end
+        subgraph T2B_Box ["Log-Centric Alternative"]
+            T2B["<b>Elastic Stack (ECK)</b><br/>• Forensic log search and Lucene power<br/>• Whole-system eBPF profiling<br/>• Kubernetes-native ECK operator"]:::t2
+            O2B["<b>Data-Heavy Alternative</b><br/>Evaluate if log search is primary"]:::out
+            T2B --> O2B
+        end
+    end
 
-    T2B["🔄 <b>Tier 2B: Elastic Stack (ECK)</b><br/>• Forensic log search and Lucene power<br/>• Whole-system eBPF profiling<br/>• Kubernetes-native ECK operator"]:::t2
+    subgraph TOSS_Box [" 🛠️ SPECIAL STRATEGIC PATHWAY (OPEN SOURCE) "]
+        TOSS["<b>Grafana OSS Stack (LGTM + Pyroscope)</b><br/>• Zero software licensing fees • 100% CNCF / OpenTelemetry native<br/>• Modular best-of-breed telemetry stack with total architectural control"]:::toss
+        O3["<b>High Internal SRE Commitment</b><br/>Requires dedicated in-house team of 4–6 platform SRE FTEs for maintenance and scaling"]:::out
+        TOSS --> O3
+    end
 
-    TOSS["🛠️ <b>Strategic: Grafana OSS Stack</b><br/>• Zero software licensing fees<br/>• 100% OpenTelemetry and CNCF native<br/>• Modular LGTM + Pyroscope stack"]:::toss
-
-    O1["🏆 <b>Lowest Operational Risk</b><br/>Fastest time-to-value for mission-critical<br/>Java, Kafka and SQL Server fleets"]:::out
-
-    O2A["⚡ <b>APM-Centric Alternative</b><br/>Real-time 1s resolution; strong fallback<br/>if host licensing is preferred"]:::out
-
-    O2B["🔍 <b>Data-Heavy Alternative</b><br/>Exceptional for log analytics; demands<br/>in-house Elasticsearch expertise"]:::out
-
-    O3["⚠️ <b>High SRE Platform Burden</b><br/>Zero license cost, but requires dedicated<br/>internal team of 4–6 SRE FTEs"]:::out
-
-    T1 -->|Turnkey and Air-Gap Parity| O1
-    T2A -->|Host Pricing and AutoTrace| O2A
-    T2B -->|Log Forensics and eBPF| O2B
-    TOSS -->|Standards and Zero License| O3
-
-    T1 ~~~ T2A ~~~ T2B ~~~ TOSS
-    O1 ~~~ O2A ~~~ O2B ~~~ O3
+    T1_Box --> T2_Box
+    T2_Box --> TOSS_Box
 ```
 
 ### 1. Tier 1 (Primary Recommendation): Dynatrace Managed
