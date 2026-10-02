@@ -445,6 +445,42 @@ flowchart LR
 | **Operational Excellence & FinOps** | • **Token Management**: Use OpenShift `TokenRequest` API to generate long-lived (1-year) Service Account tokens, bypassing 24-hour expiration for stable Thanos query connectivity.<br/>• **Telemetry Optimization (FinOps)**: Strategic metric dropping (e.g. `container_threads`) and label filtering in `metrics.alloy` pipelines delivering up to **15% reduction in time-series cardinality and volume**. |
 | **Troubleshooting Decision Tree** | • **Missing Metrics**: Verify Alloy-specific Security Context Constraints (`SCC`) applied to namespace.<br/>• **403 Unauthorized (Thanos)**: Regenerate expired Service Account token via `oc create token`.<br/>• **Login Failure / Redirect URI Mismatch**: Audit OAuth proxy container logs and verify OpenShift Route public hostname matches Azure App Registration redirect URI. |
 
+#### Detailed Engineering Blueprint Breakdown (Bullet Points)
+
+- **The Three Observability Pathways on OpenShift**:
+  - **Solution 1: Grafana Cloud (SaaS-First Hybrid Model)**:
+    - *Operational Model*: Low-maintenance hybrid strategy where Grafana Alloy runs locally on OpenShift as an agent/collector forwarding telemetry to Grafana Cloud's hosted managed backend.
+    - *Profile*: Managed backend, low maintenance burden, pay-per-use consumption pricing, and medium OpenShift native integration. Best for cloud-forward enterprises with outbound internet connectivity.
+  - **Solution 2: Community Helm Chart (Self-Managed Air-Gapped Stack)**:
+    - *Operational Model*: Air-gapped friendly local stack using the community `kube-prometheus-stack` Helm chart. Keeps 100% of telemetry data within the local cluster boundaries.
+    - *Profile*: Local Prometheus/Loki/Tempo backend, infrastructure-only cost profile (zero software licensing fees), but demands high SRE maintenance overhead to manage storage scaling, compaction, and retention.
+  - **Solution 3: Grafana Operator (Recommended OpenShift Production Standard)**:
+    - *Operational Model*: Native OpenShift integration using Red Hat-certified Operator Lifecycle Manager (OLM) Custom Resources (`Grafana`, `GrafanaDatasource`, `GrafanaDashboard`).
+    - *Profile*: Directly queries OpenShift's built-in Thanos and Prometheus endpoints, reusing existing platform infrastructure without data duplication. Delivers the lowest TCO with medium operator-led maintenance and very high OpenShift native integration.
+
+- **Security & Identity Governance Framework**:
+  - **Custom SCC Requirements for Deep Telemetry**:
+    - Grafana Alloy containers require elevated Security Context Constraints (`SCCs`) with `allowPrivilegedContainer` (to enable eBPF-based socket filtering and kernel network tracing) and `allowHostPID` (to map OS process-level metrics and container namespaces).
+  - **Azure AD OAuth Flow with OpenShift OAuth Proxy**:
+    - Implements secure header-based authentication: The user authenticates against Azure Active Directory (Entra ID), routed through the OpenShift OAuth Proxy (`oauth-proxy` sidecar).
+    - The proxy injects the `X-WEBAUTH-USER` header into upstream requests, securely mapping user identities directly to Grafana Role-Based Access Control (RBAC) groups (Admin, Editor, Viewer).
+  - **Unified Tagging Schema & Automated Discovery**:
+    - Enforces standardized discovery labels such as `app.kubernetes.io/name` across all deployed pods and services to enable automatic metric scrape target discovery, log stream aggregation, and cross-dashboard filtering.
+
+- **Operational Excellence (Day-1 Provisioning & Day-2 FinOps)**:
+  - **Day 1 – Automated Lifecycle Management**:
+    - Declarative GitOps management where the Grafana Operator reconciles Custom Resources (`CRs`) into StatefulSets, automatically injecting Thanos datasources, TLS certificates, and dashboard ConfigMaps without manual UI configuration.
+  - **Telemetry Optimization & FinOps (15% Volume Reduction)**:
+    - Deploys strategic metric dropping and label pruning rules directly in `metrics.alloy` pipeline configs (e.g., filtering out noisy, high-churn `container_threads` metrics).
+    - Achieves an estimated **15% reduction in time-series cardinality and storage volume** at the collection source before telemetry hits storage backends.
+  - **Token Management (Bypassing 24-Hour Expiration)**:
+    - Solves OpenShift 4.x's default 24-hour Service Account token expiration: Uses the `TokenRequest` API or dedicated long-lived Secret tokens (1-year validity) to guarantee uninterrupted, production-grade Thanos query connectivity.
+
+- **Troubleshooting & Diagnostic Decision Tree**:
+  - **Symptom 1: Missing Metrics**: Check Alloy agent container logs and verify that the required custom Security Context Constraint (`SCC`) is bound to the collector's ServiceAccount in the target namespace.
+  - **Symptom 2: 403 Unauthorized (Thanos)**: Frequent HTTP 403 errors indicate an expired Service Account bearer token; regenerate the authentication secret or token via `oc create token` with appropriate Thanos reader roles.
+  - **Symptom 3: Login Failure / Redirect URI Mismatch**: Inspect `oauth-proxy` container logs to confirm that the Azure App Registration redirect URI matches the public OpenShift Route URL exactly (including HTTPS protocol and route suffix).
+
 ---
 
 ## 11. Repository Documentation & Advanced Solutions Map

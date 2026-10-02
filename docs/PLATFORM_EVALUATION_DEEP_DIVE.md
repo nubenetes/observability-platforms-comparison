@@ -320,6 +320,9 @@ Infrastructure monitoring suite with roots in Nagios-style health checking, expa
 ### 11.1 Architecture & Deployment Model
 Complete open-source LGTM + Pyroscope stack deployed directly inside enterprise infrastructure. Components include **Grafana Mimir** (metrics), **Grafana Loki** (logs), **Grafana Tempo** (traces), and **Grafana Pyroscope** (continuous profiling), unified through Grafana dashboards and collected via **Grafana Alloy** or the OpenTelemetry Operator.
 
+> [!TIP]
+> **Visual Engineering Blueprint**: For an architectural breakdown of the 3 Grafana OpenShift deployment pathways, custom SCCs for eBPF, Azure AD OAuth integration, and FinOps telemetry filtering, see the [Grafana Observability on OpenShift Engineering Blueprint](../README.md#blueprint-2-grafana-observability-on-openshift-engineering-blueprint).
+
 ### 11.2 Air-Gapped & On-Premise Viability
 - **Status**: **Fully Viable (Self-Hosted OSS)**
 - Entirely self-contained. All binaries, Helm charts, and container images can be hosted inside private mirror registries with zero external internet dependencies.
