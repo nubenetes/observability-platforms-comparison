@@ -397,6 +397,39 @@ flowchart LR
 | **Expert Insights & Pro-Tips** | • **Control Plane Monitoring**: On OpenShift 4.x, master control plane nodes (API Server, Etcd) must be monitored via dedicated endpoint checks because agents cannot poll these restricted containers directly.<br/>• **Resource Profiling**: Establish a steady-state usage baseline using `oc adm top`, then set container resource limits at 2x that baseline to safely handle bursty observability loads without throttling application microservices. |
 | **Deployment Solution Comparison** | • **Solution 1 (Helm v3 / Datadog Agent)**: *Legacy* — Suitable for basic manual deployments, but lacks native OLM lifecycle automation.<br/>• **Solution 2 (Datadog Operator / OLM / CRDs)**: *Current / Recommended* — Production standard for OpenShift with automated upgrades and health checks.<br/>• **APM PoC (Java Spring / K8s Manifests)**: *Reference Guide* — Proven pattern for testing automated tracing library injection. |
 
+#### Detailed Engineering Blueprint Breakdown (Bullet Points)
+
+- **Prerequisites & Platform Environment**:
+  - **OpenShift Version Compatibility**: Specifically tailored for OpenShift 4.10+ (tested and validated through 4.14+) to leverage modern Kubernetes APIs, Operator Lifecycle Manager (OLM), and Red Hat enterprise features.
+  - **Elevated RBAC & Privileges**: Requires `cluster-admin` privileges to create and manage Red Hat Security Context Constraints (`SCCs`) and deploy through the OLM catalog.
+  - **Cluster Credentials**: Demands a valid Datadog API Key secret for cloud intake authentication and a DockerHub/Registry pull secret to fetch automated APM tracing init-containers (`dd-lib`).
+
+- **Core Architecture: Management & Data Flow**:
+  - **Management Plane (Datadog Operator)**: Operates as a Level 5 operator reconciling `DatadogAgent` Custom Resource Definitions (CRDs). Automatically manages the deployment, configuration, and rolling upgrades of all agent pods.
+  - **Control Plane (Datadog Cluster Agent)**: Sits between the Kubernetes API server and worker nodes. Serves as a caching proxy to prevent node agents from overwhelming the API server, correlates cluster-level metadata, and acts as an External Metrics Server to drive Horizontal Pod Autoscaling (HPA).
+  - **Compute Nodes (Node Agent DaemonSet with eBPF)**: Deployed across every OpenShift worker node. Directly collects container metrics, logs, and kernel-level network flow data via low-overhead eBPF system probes without requiring kernel modifications.
+  - **Data Intake (Datadog SaaS Ingestion)**: Aggregates metrics, distributed traces, structured logs, and security events locally before securely streaming them over outbound TLS/HTTPS to Datadog's cloud intake API.
+
+- **APM Mutation & Automated Zero-Code Injection Flow**:
+  - **Developer Action**: Developers push and deploy standard Kubernetes deployment manifests using `oc apply` without modifying application source code or `Dockerfile` configurations.
+  - **Mutating Admission Webhook**: The Datadog Admission Controller intercepts pod creation requests, inspecting pod annotations (e.g., `admission.datadoghq.com/java-lib.version`).
+  - **Library Injection**: Automatically injects a lightweight init-container (`dd-lib`) that copies the tracing library binary into a shared in-memory volume and injects environment variables (e.g., `JAVA_TOOL_OPTIONS`).
+  - **Automated Tracing**: The application container initializes with the tracer active, automatically instrumenting HTTP calls, JDBC queries, and Kafka streams, sending traces to the node agent on port `8126`.
+
+- **Unified Tagging & FinOps Cost Governance**:
+  - **The "Big Three" Tags**: Mandates attaching `env` (e.g., `prod`, `staging`), `service` (e.g., `order-service`), and `version` (e.g., `v2.4.0`) to every telemetry point, enabling seamless 1-click cross-pillar correlation across metrics, logs, traces, and profiles.
+  - **Precision Cost Control**: Configures worker-node level filtering (`containerInclude` / `containerExclude`) to discard noise from platform and operator namespaces, preventing runaway cloud ingestion bills.
+  - **Usage Attribution**: Enables detailed FinOps cost tracking in the Datadog UI by breaking down indexed log volume and APM span counts by `kube_namespace`.
+
+- **Expert Insights & Operational Pro-Tips**:
+  - **OpenShift Control Plane Monitoring**: On OpenShift 4.x, master nodes and etcd cannot be scraped directly by container agents; they must be monitored via dedicated Kubernetes API server and etcd endpoint checks.
+  - **Resource Profiling & Sizing**: SRE teams must establish an agent baseline using `oc adm top`, then configure resource limits at 2x that baseline to absorb telemetry bursts during high-traffic incidents without starving business workloads.
+
+- **Deployment Solution Comparison Matrix**:
+  - **Solution 1 (Helm v3 / Datadog Agent)**: *Legacy* — Simple manual manifest application, but lacks automatic day-2 lifecycle management and OpenShift OLM integration.
+  - **Solution 2 (Datadog Operator / OLM / CRDs)**: *Current / Recommended* — The official production-grade approach on OpenShift, ensuring declarative state, automatic updates, and native security compliance.
+  - **APM PoC (Java Spring / K8s Manifests)**: *Reference Blueprint* — Provides a battle-tested template for testing automated webhook mutation and library injection on sample workloads.
+
 ---
 
 ### Blueprint 2: Grafana Observability on OpenShift: Engineering Blueprint
