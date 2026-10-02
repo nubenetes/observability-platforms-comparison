@@ -59,6 +59,8 @@ This repository includes a comprehensive multi-format educational series synthes
 | 6 | 📽️ Video Guide | [**Air-Gapped Observability: 7 Pillars & SLO Metrics**](https://www.youtube.com/watch?v=AknmFwjITHo) | The 7 Pillars, PromQL Math & SLO Metrics | 🇺🇸 English *(CC 20+)* | `10:05` | [▶️ Watch Video](https://www.youtube.com/watch?v=AknmFwjITHo) |
 | 7 | 📽️ Video Guide | [**Air-Gapped Observability: Diagnosing Unknown Unknowns**](https://www.youtube.com/watch?v=AeDhNiCUlBs) | Unknown Unknowns, Kafka & Database Diagnostics | 🇺🇸 English *(CC 20+)* | `9:06` | [▶️ Watch Video](https://www.youtube.com/watch?v=AeDhNiCUlBs) |
 | 8 | 📽️ Video Guide | [**Air-Gapped Observability Strategy: 12 Platforms & TCO**](https://www.youtube.com/watch?v=22ELDrv1i4o) | 12 Platforms Matrix, Decision Tiers & FinOps TCO | 🇺🇸 English *(CC 20+)* | `8:33` | [▶️ Watch Video](https://www.youtube.com/watch?v=22ELDrv1i4o) |
+| 9 | 🎙️ **Podcast** | [**Air Gapped Observability: 12 Platforms Comparison & TCO**](https://www.youtube.com/watch?v=b8RVbo6ecUg) | Master Comparison, 3 Tiers & 3-Year FinOps TCO | 🇺🇸 English *(CC 20+)* | `55:23` | [▶️ Listen to Podcast](https://www.youtube.com/watch?v=b8RVbo6ecUg) |
+| 10 | 🎙️ **Podcast** | [**Observabilidad en Entornos Air Gapped: 12 Plataformas**](https://www.youtube.com/watch?v=xyBbVX3wbqM) | Arquitectura Air-Gapped, 7 Pilares y TCO Real | 🇪🇸 Spanish *(CC 20+)* | `17:17` | [▶️ Escuchar Podcast](https://www.youtube.com/watch?v=xyBbVX3wbqM) |
 
 ### ⚡ Topic-Focused Technical Shorts
 
@@ -596,6 +598,24 @@ flowchart LR
 - 🌐 **Origin Language**: English (Subtitles in 20+ languages)
 - ⏱️ **Duration**: 8:33
 - 📝 **Description**: The definitive executive strategy session and procurement playbook for enterprise platform engineering teams. Deconstructs the real total cost of ownership (TCO) between open-source DIY stacks and commercial platforms, establishing 3 clear strategic decision tiers: Tier 1 Turnkey Commercial (Dynatrace Managed), Tier 2 Viable Alternatives (Instana, Elastic), and Tier 3 Engineered OSS (Grafana LGTM).
+
+##### 9. Air Gapped Observability: 12 Platforms Comparison & TCO Analysis
+- 🔗 **Link**: [https://www.youtube.com/watch?v=b8RVbo6ecUg](https://www.youtube.com/watch?v=b8RVbo6ecUg)
+- 🛠️ **Studio Edit**: [https://studio.youtube.com/video/b8RVbo6ecUg/edit](https://studio.youtube.com/video/b8RVbo6ecUg/edit)
+- 🎙️ **Format**: 🎙️ Deep Dive Podcast (Conversational Masterclass)
+- 🏷️ **Category**: 12 Platforms Matrix, Decision Tiers & FinOps TCO
+- 🌐 **Origin Language**: English (Subtitles in 20+ languages)
+- ⏱️ **Duration**: 55:23
+- 📝 **Description**: Exhaustive architectural podcast masterclass deconstructing enterprise full-stack observability inside strictly disconnected (air-gapped) hybrid cloud environments. Evaluates 12 market-leading platforms across 3 strategic decision tiers (Dynatrace Managed, IBM Instana, Elastic ECK, Grafana LGTM, Prometheus), analyzes real 3-year FinOps TCO (licensing vs storage and engineering maintenance toil), and deconstructs why pure SaaS tools are disqualified by zero-egress mandates.
+
+##### 10. Observabilidad en Entornos Air Gapped: Evaluación de 12 Plataformas
+- 🔗 **Link**: [https://www.youtube.com/watch?v=xyBbVX3wbqM](https://www.youtube.com/watch?v=xyBbVX3wbqM)
+- 🛠️ **Studio Edit**: [https://studio.youtube.com/video/xyBbVX3wbqM/edit](https://studio.youtube.com/video/xyBbVX3wbqM/edit)
+- 🎙️ **Format**: 🎙️ Deep Dive Podcast (Conversational Masterclass en Español)
+- 🏷️ **Category**: Arquitectura Air-Gapped, 7 Pilares y Evaluación de Plataformas
+- 🌐 **Origin Language**: Spanish (Subtitles in 20+ languages)
+- ⏱️ **Duration**: 17:17
+- 📝 **Description**: Episodio completo en formato podcast técnico en español analizando la arquitectura de observabilidad en entornos híbridos y desconectados (air-gapped) altamente regulados. Contrasta la construcción de plataformas internas de desarrollo (IDP Golden Path en jenkins-2026) con una evaluación exhaustiva de 12 plataformas de observabilidad, desgranando los 7 pilares, el peligro de las medias aritméticas en latencias P99 y el coste real de propiedad (TCO) entre código abierto y soluciones comerciales.
 
 </details>
 
