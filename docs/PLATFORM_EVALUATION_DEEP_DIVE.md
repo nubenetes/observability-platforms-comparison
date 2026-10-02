@@ -56,6 +56,9 @@ Built directly into Red Hat OpenShift Container Platform (OCP). Managed declarat
 ### 2.1 Architecture & Deployment Model
 Market-leading SaaS observability platform. On OpenShift, deployed via the Red Hat-certified **Datadog Operator**. Deploys the Datadog Cluster Agent (proxying Kubernetes API traffic and acting as an external metrics provider for HPA) and a DaemonSet of Datadog Agents collecting metrics, logs, traces, and continuous profiles via eBPF.
 
+> [!TIP]
+> **Visual Engineering Blueprint**: For an architectural breakdown of Datadog's management plane, mutating admission webhook injection flow, eBPF node agents, and FinOps tagging on OpenShift, see the [Datadog on OpenShift 4.x Engineering Blueprint](../README.md#blueprint-1-datadog-on-openshift-4x-the-engineering-blueprint).
+
 ### 2.2 Air-Gapped & On-Premise Viability
 - **Status**: **NOT VIABLE for Disconnected / Air-Gapped Environments**
 - Datadog is an exclusively SaaS-delivered platform. It does not offer a self-hosted or on-premises backend. Because telemetry must be forwarded to public cloud endpoints (`*.datadoghq.com`), it is fundamentally incompatible with air-gapped production enclaves.

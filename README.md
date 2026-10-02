@@ -379,11 +379,38 @@ flowchart LR
 
 ## 10. Visual Architecture Blueprints
 
-### Blueprint 1: Datadog on OpenShift 4.x Architecture
-![Datadog Architecture Blueprint](assets/Observability_Platform_Engineering_Blueprint.png)
+### Blueprint 1: Datadog on OpenShift 4.x: The Engineering Blueprint
 
-### Blueprint 2: Grafana Observability on OpenShift Architecture
-![Grafana Architecture Blueprint](assets/Platform_Observability_Engineering_Blueprint.png)
+[![Datadog on OpenShift 4.x: The Engineering Blueprint](assets/datadog-openshift-engineering-blueprint.png)](assets/datadog-openshift-engineering-blueprint.png)
+
+#### Architectural Breakdown & Implementation Dimensions
+
+| Architecture Dimension | Engineering Specification & Component Details |
+| :--- | :--- |
+| **Prerequisites & Environment** | • **Platform Compatibility**: Optimized for OpenShift 4.10+ (validated through 4.14+) ensuring compatibility with modern OCP features.<br/>• **Elevated Privileges**: Requires `cluster-admin` permissions to manage Security Context Constraints (`SCCs`) and Operator Lifecycle Manager (`OLM`).<br/>• **Essential Credentials**: Requires a Datadog API Key secret and DockerHub credentials for automated tracing library injection. |
+| **Management Plane** | **Datadog Operator**: Reconciles Custom Resource Definitions (`DatadogAgent` CRDs) to automate agent deployment, configuration updates, and lifecycle operations across the cluster. |
+| **Control Plane** | **Datadog Cluster Agent**: Acts as an intelligent proxy to the Kubernetes API Server, reducing API load, synchronizing pod metadata, and providing cluster-level metrics via the External Metrics Server for Horizontal Pod Autoscaling (`HPA`). |
+| **Compute Nodes** | **Node Agent DaemonSet (with eBPF)**: Deployed across all OpenShift worker nodes to collect system metrics, container logs, and low-level kernel socket/network events via eBPF probes with minimal runtime overhead. |
+| **Data Intake** | **Datadog SaaS Ingest**: Telemetry (Metrics, Traces, Logs, and Events) is securely transmitted via outbound TLS/HTTPS to Datadog's cloud intake API endpoints. *(Note: Disqualifies this architecture from strictly air-gapped enclaves without external proxy routing).* |
+| **APM Mutation & Injection Flow** | **1. Developer Action**: Standard deployment manifest applied via `oc apply`.<br/>**2. Mutating Admission Webhook**: Datadog Admission Controller intercepts the pod creation request and checks for namespace/pod annotations.<br/>**3. Library Injection**: Automatically injects an Init-Container (`dd-lib`) and mounts tracing libraries and environment variables into the application pod without modifying source code or Dockerfiles.<br/>**4. Automated Tracing**: Application runtime starts with the tracing library active, streaming APM spans locally to the Node Agent via port 8126. |
+| **Unified Tagging & FinOps Strategy** | • **The "Big Three" Tags**: Mandatory injection of `env`, `service`, and `version` across all telemetry streams for instant 1-click correlation.<br/>• **Precision Cost Control**: Node-level filtering via `containerInclude` and `containerExclude` rules to prevent system namespace "junk data" (e.g. OpenShift internal operator churn) from inflating SaaS ingestion bills.<br/>• **Usage Attribution**: Segment and attribute indexed log volume and APM span counts by `kube_namespace` for internal chargeback and FinOps reporting. |
+| **Expert Insights & Pro-Tips** | • **Control Plane Monitoring**: On OpenShift 4.x, master control plane nodes (API Server, Etcd) must be monitored via dedicated endpoint checks because agents cannot poll these restricted containers directly.<br/>• **Resource Profiling**: Establish a steady-state usage baseline using `oc adm top`, then set container resource limits at 2x that baseline to safely handle bursty observability loads without throttling application microservices. |
+| **Deployment Solution Comparison** | • **Solution 1 (Helm v3 / Datadog Agent)**: *Legacy* — Suitable for basic manual deployments, but lacks native OLM lifecycle automation.<br/>• **Solution 2 (Datadog Operator / OLM / CRDs)**: *Current / Recommended* — Production standard for OpenShift with automated upgrades and health checks.<br/>• **APM PoC (Java Spring / K8s Manifests)**: *Reference Guide* — Proven pattern for testing automated tracing library injection. |
+
+---
+
+### Blueprint 2: Grafana Observability on OpenShift: Engineering Blueprint
+
+[![Grafana Observability on OpenShift: Engineering Blueprint](assets/grafana-openshift-engineering-blueprint.png)](assets/grafana-openshift-engineering-blueprint.png)
+
+#### Architectural Breakdown & Implementation Dimensions
+
+| Architecture Dimension | Engineering Specification & Component Details |
+| :--- | :--- |
+| **The 3 Observability Pathways** | • **Solution 1 (Grafana Cloud / SaaS)**: Low-maintenance hybrid model using Grafana Alloy as a local agent forwarding to managed cloud storage. Ideal for SaaS-first organizations.<br/>• **Solution 2 (Community Chart / Self-Managed)**: Air-gap friendly local stack leveraging `kube-prometheus-stack` Helm chart for high-control environments keeping all telemetry on-cluster.<br/>• **Solution 3 (Grafana Operator / Recommended)**: Native OpenShift integration deploying Kubernetes CRDs to query internal Thanos/Prometheus data with medium maintenance and zero data duplication. |
+| **Security & Identity Framework** | • **Custom SCC Requirements**: Elevated privileges (`allowPrivilegedContainer`, `allowHostPID`) for Grafana Alloy to perform deep eBPF-based socket filtering and kernel process mapping.<br/>• **Azure AD OAuth Flow**: Secure header-based authentication through OpenShift OAuth Proxy (`oauth-proxy`) with `X-WEBAUTH-USER` mapping to Grafana RBAC roles.<br/>• **Standardized Discovery Labels**: Unified tagging schema (`app.kubernetes.io/name`) for automated discovery and telemetry enrichment. |
+| **Operational Excellence & FinOps** | • **Token Management**: Use OpenShift `TokenRequest` API to generate long-lived (1-year) Service Account tokens, bypassing 24-hour expiration for stable Thanos query connectivity.<br/>• **Telemetry Optimization (FinOps)**: Strategic metric dropping (e.g. `container_threads`) and label filtering in `metrics.alloy` pipelines delivering up to **15% reduction in time-series cardinality and volume**. |
+| **Troubleshooting Decision Tree** | • **Missing Metrics**: Verify Alloy-specific Security Context Constraints (`SCC`) applied to namespace.<br/>• **403 Unauthorized (Thanos)**: Regenerate expired Service Account token via `oc create token`.<br/>• **Login Failure / Redirect URI Mismatch**: Audit OAuth proxy container logs and verify OpenShift Route public hostname matches Azure App Registration redirect URI. |
 
 ---
 
