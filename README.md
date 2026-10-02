@@ -56,6 +56,9 @@ This repository includes a comprehensive multi-format educational series synthes
 | 3 | 📽️ Video Guide | [**12 Observability Platforms**](https://www.youtube.com/watch?v=EClMYT-XXE0) | Master Comparison Matrix & Vendor Evaluation | 🇺🇸 English *(CC 20+)* | `12:29` | [▶️ Watch Video](https://www.youtube.com/watch?v=EClMYT-XXE0) |
 | 4 | 📽️ Video Guide | [**Operation Air Gap**](https://www.youtube.com/watch?v=r_oFEMNqN5U) | Enterprise Architecture & Zero-Trust Isolation | 🇺🇸 English *(CC 20+)* | `9:21` | [▶️ Watch Video](https://www.youtube.com/watch?v=r_oFEMNqN5U) |
 | 5 | 📽️ Video Guide | [**Enterprise Observability**](https://www.youtube.com/watch?v=Ul3c9WCKmNY) | Strategy & The 7 Pillars of Observability | 🇺🇸 English *(CC 20+)* | `9:35` | [▶️ Watch Video](https://www.youtube.com/watch?v=Ul3c9WCKmNY) |
+| 6 | 📽️ Video Guide | [**Air-Gapped Observability: 7 Pillars & SLO Metrics**](https://www.youtube.com/watch?v=AknmFwjITHo) | The 7 Pillars, PromQL Math & SLO Metrics | 🇺🇸 English *(CC 20+)* | `10:05` | [▶️ Watch Video](https://www.youtube.com/watch?v=AknmFwjITHo) |
+| 7 | 📽️ Video Guide | [**Air-Gapped Observability: Diagnosing Unknown Unknowns**](https://www.youtube.com/watch?v=AeDhNiCUlBs) | Unknown Unknowns, Kafka & Database Diagnostics | 🇺🇸 English *(CC 20+)* | `9:06` | [▶️ Watch Video](https://www.youtube.com/watch?v=AeDhNiCUlBs) |
+| 8 | 📽️ Video Guide | [**Air-Gapped Observability Strategy: 12 Platforms & TCO**](https://www.youtube.com/watch?v=22ELDrv1i4o) | 12 Platforms Matrix, Decision Tiers & FinOps TCO | 🇺🇸 English *(CC 20+)* | `8:33` | [▶️ Watch Video](https://www.youtube.com/watch?v=22ELDrv1i4o) |
 
 ### ⚡ Topic-Focused Technical Shorts
 
@@ -71,6 +74,8 @@ This repository includes a comprehensive multi-format educational series synthes
 | 8 | [**The Hidden Cost of Free Software**](https://www.youtube.com/shorts/Tnn8h_Q_kiU) | FinOps & Total Cost of Ownership (TCO) | 🇺🇸 English *(CC 20+)* | `1:08` | [▶️ Watch Short](https://www.youtube.com/shorts/Tnn8h_Q_kiU) |
 | 9 | [**Decoding Cloud Chaos: The 7 Pillars of Observability**](https://www.youtube.com/shorts/nm6cs6NN2n8) | Telemetry Standards & Core Pillars | 🇺🇸 English *(CC 20+)* | `1:29` | [▶️ Watch Short](https://www.youtube.com/shorts/nm6cs6NN2n8) |
 | 10 | [**Inside the Ultimate Observability Stress Test Toolkit**](https://www.youtube.com/shorts/EwPDZ26T1OQ) | PoC Framework & Chaos Tooling | 🇺🇸 English *(CC 20+)* | `1:13` | [▶️ Watch Short](https://www.youtube.com/shorts/EwPDZ26T1OQ) |
+| 11 | [**Why Averages Lie in Microservices: SLO Metrics & P99 Latency**](https://www.youtube.com/shorts/5q_3PnAU1DM) | SLO Engineering & Tail Latency | 🇺🇸 English *(CC 20+)* | `1:16` | [▶️ Watch Short](https://www.youtube.com/shorts/5q_3PnAU1DM) |
+| 12 | [**Por Qué las Medias Mienten en Microservicios: Métricas SLO**](https://www.youtube.com/shorts/2XFYvmGmaS0) | SLO Engineering & Tail Latency | 🇪🇸 Spanish *(CC 20+)* | `1:12` | [▶️ Watch Short](https://www.youtube.com/shorts/2XFYvmGmaS0) |
 
 *For complete descriptions and the full progressive learning path, see [Section 13: Video Walkthroughs & Architecture References](#13-video-walkthroughs--architecture-references-youtube).*
 
@@ -565,6 +570,33 @@ flowchart LR
 - ⏱️ **Duration**: 9:35
 - 📝 **Description**: Masterclass on modern cloud-native observability strategy, moving beyond classic "monitoring" (known knowns) into true observability (unknown unknowns). Explores the 7 Pillars: Metrics, Logs, Distributed Tracing, Continuous Profiling, Real User Monitoring (RUM), Network eBPF, and Causal AIOps.
 
+##### 6. Air-Gapped Observability: Shifting from Monitoring to the 7 Pillars & SLO Metrics
+- 🔗 **Link**: [https://www.youtube.com/watch?v=AknmFwjITHo](https://www.youtube.com/watch?v=AknmFwjITHo)
+- 🛠️ **Studio Edit**: [https://studio.youtube.com/video/AknmFwjITHo/edit](https://studio.youtube.com/video/AknmFwjITHo/edit)
+- 🎙️ **Format**: 📽️ Technical Video Guide (Architecture Masterclass)
+- 🏷️ **Category**: The 7 Pillars, PromQL Math & SLO Metrics
+- 🌐 **Origin Language**: English (Subtitles in 20+ languages)
+- ⏱️ **Duration**: 10:05
+- 📝 **Description**: Exhaustive architectural masterclass and platform engineering guide on achieving true full-stack observability inside strictly disconnected (air-gapped) enterprise clouds. Learn why traditional monitoring tools blind teams to microservice failures, how site reliability engineers handle PromQL percentile aggregation rules without averaging P99s, and how request-based SLOs measure true user impact across OpenShift 4.18+, VMware vSphere, and sovereign enclaves.
+
+##### 7. Air-Gapped Observability: Diagnosing Unknown Unknowns in Hybrid Cloud Microservices
+- 🔗 **Link**: [https://www.youtube.com/watch?v=AeDhNiCUlBs](https://www.youtube.com/watch?v=AeDhNiCUlBs)
+- 🛠️ **Studio Edit**: [https://studio.youtube.com/video/AeDhNiCUlBs/edit](https://studio.youtube.com/video/AeDhNiCUlBs/edit)
+- 🎙️ **Format**: 📽️ Technical Video Guide (Deep Dive Diagnostics)
+- 🏷️ **Category**: Unknown Unknowns, Kafka & Database Diagnostics
+- 🌐 **Origin Language**: English (Subtitles in 20+ languages)
+- ⏱️ **Duration**: 9:06
+- 📝 **Description**: Deep-dive technical guide for enterprise platform architects navigating the brutal operational shift from legacy monitoring to full-stack cloud-native observability inside disconnected, zero-egress environments. Explores diagnosing emergent cascading failures across Java microservices, Apache Kafka event streams, and relational databases, comparing 12 leading market platforms across sovereign enclaves.
+
+##### 8. Air-Gapped Observability Strategy: 12 Platforms, 3 Decision Tiers & TCO Analysis
+- 🔗 **Link**: [https://www.youtube.com/watch?v=22ELDrv1i4o](https://www.youtube.com/watch?v=22ELDrv1i4o)
+- 🛠️ **Studio Edit**: [https://studio.youtube.com/video/22ELDrv1i4o/edit](https://studio.youtube.com/video/22ELDrv1i4o/edit)
+- 🎙️ **Format**: 📽️ Technical Video Guide (Executive Strategy & TCO)
+- 🏷️ **Category**: 12 Platforms Matrix, Decision Tiers & FinOps TCO
+- 🌐 **Origin Language**: English (Subtitles in 20+ languages)
+- ⏱️ **Duration**: 8:33
+- 📝 **Description**: The definitive executive strategy session and procurement playbook for enterprise platform engineering teams. Deconstructs the real total cost of ownership (TCO) between open-source DIY stacks and commercial platforms, establishing 3 clear strategic decision tiers: Tier 1 Turnkey Commercial (Dynatrace Managed), Tier 2 Viable Alternatives (Instana, Elastic), and Tier 3 Engineered OSS (Grafana LGTM).
+
 </details>
 
 ---
@@ -583,6 +615,8 @@ flowchart LR
 | 8 | [The Hidden Cost of Free Software](https://www.youtube.com/shorts/Tnn8h_Q_kiU) | FinOps & Total Cost of Ownership (TCO) | 🇺🇸 English *(CC 20+)* | `1:08` | [▶️ Watch](https://www.youtube.com/shorts/Tnn8h_Q_kiU) |
 | 9 | [Decoding Cloud Chaos: The 7 Pillars of Observability](https://www.youtube.com/shorts/nm6cs6NN2n8) | Telemetry Standards & Core Pillars | 🇺🇸 English *(CC 20+)* | `1:29` | [▶️ Watch](https://www.youtube.com/shorts/nm6cs6NN2n8) |
 | 10 | [Inside the Ultimate Observability Stress Test Toolkit](https://www.youtube.com/shorts/EwPDZ26T1OQ) | PoC Framework & Chaos Tooling | 🇺🇸 English *(CC 20+)* | `1:13` | [▶️ Watch](https://www.youtube.com/shorts/EwPDZ26T1OQ) |
+| 11 | [Why Averages Lie in Microservices: SLO Metrics & P99 Latency](https://www.youtube.com/shorts/5q_3PnAU1DM) | SLO Engineering & Tail Latency | 🇺🇸 English *(CC 20+)* | `1:16` | [▶️ Watch](https://www.youtube.com/shorts/5q_3PnAU1DM) |
+| 12 | [Por Qué las Medias Mienten en Microservicios: Métricas SLO](https://www.youtube.com/shorts/2XFYvmGmaS0) | SLO Engineering & Tail Latency | 🇪🇸 Spanish *(CC 20+)* | `1:12` | [▶️ Watch](https://www.youtube.com/shorts/2XFYvmGmaS0) |
 
 <details open>
 <summary>🔍 <strong>Detailed Breakdown: Technical Shorts by Category</strong></summary>
@@ -626,5 +660,13 @@ flowchart LR
 - 🇺🇸 [**The Hidden Cost of Free Software**](https://www.youtube.com/shorts/Tnn8h_Q_kiU) `(1:08)`  
   *Origin Language: English (Subtitles in 20+ languages)*  
   Busting the myth of "free" open-source software. While OSS has $0 licensing, internal engineering maintenance, storage sizing, high-availability toil, and dashboard sprawl often make commercial platforms cheaper in total TCO.
+
+#### ⏱️ Category 5: Service Level Objectives (SLOs) & Microservices Latency Metrics
+- 🇺🇸 [**Why Averages Lie in Microservices: SLO Metrics & P99 Latency**](https://www.youtube.com/shorts/5q_3PnAU1DM) `(1:16)`  
+  *Origin Language: English (Subtitles in 20+ languages)*  
+  Why site reliability engineers refuse to trust average performance metrics. In distributed systems, averages mathematically hide brief but catastrophic microsecond bottlenecks, such as Linux CFS quota CPU throttling and JVM GC pauses. Explains why SREs enforce P99 latency SLOs and avoid aggregating percentiles in PromQL.
+- 🇪🇸 [**Por Qué las Medias Mienten en Microservicios: Métricas SLO y Percentil 99**](https://www.youtube.com/shorts/2XFYvmGmaS0) `(1:12)`  
+  *Origin Language: Spanish (Subtitles in 20+ languages)*  
+  Por qué los equipos SRE desconfían de los promedios en microservicios distribuidos. Las medias aplanan matemáticamente los picos críticos de latencia y estrangulamiento de cuota CFS en contenedores. Demuestra la importancia de centrarse en el percentil 99 (P99), evitar promediar percentiles en PromQL y correlacionar con rastreo distribuido.
 
 </details>
