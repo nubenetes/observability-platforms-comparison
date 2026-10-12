@@ -790,7 +790,7 @@ flowchart LR
 
 ### 🎬 Full-Length Technical Deep Dives (Videos & Podcasts)
 
-<details open>
+<details>
 <summary>🔍 <strong>Detailed Breakdown: Full-Length Sessions</strong></summary>
 
 <br/>
@@ -901,7 +901,7 @@ flowchart LR
 | 11 | [Why Averages Lie in Microservices: SLO Metrics & P99 Latency](https://www.youtube.com/shorts/5q_3PnAU1DM) | SLO Engineering & Tail Latency | 🇺🇸 English *(CC 20+)* | `1:16` | [▶️ Watch](https://www.youtube.com/shorts/5q_3PnAU1DM) |
 | 12 | [Por Qué las Medias Mienten en Microservicios: Métricas SLO](https://www.youtube.com/shorts/2XFYvmGmaS0) | SLO Engineering & Tail Latency | 🇪🇸 Spanish *(CC 20+)* | `1:12` | [▶️ Watch](https://www.youtube.com/shorts/2XFYvmGmaS0) |
 
-<details open>
+<details>
 <summary>🔍 <strong>Detailed Breakdown: Technical Shorts by Category</strong></summary>
 
 <br/>
