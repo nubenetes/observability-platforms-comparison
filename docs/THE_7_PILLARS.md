@@ -83,8 +83,9 @@ Logs are timestamped, structured (JSON) or unstructured text records generated b
   - *Advantage*: Drastically lower storage cost (up to 80% reduction vs. Elasticsearch) and native Prometheus-like operational model.
   - *Disadvantage*: Slower querying for needle-in-a-haystack searches across non-labeled payload fields without structured parsing filters.
 
-### Context Enrichment
-Modern enterprise logging enforces **Mapped Diagnostic Context (MDC)** to automatically inject active `trace_id`, `span_id`, `service_name`, and `environment` into every log statement, bridging logs directly with distributed traces.
+### Context Enrichment & The 4th Paradigm (Zero-Code eBPF VFS Mutation)
+- **Traditional SDK MDC Injection**: Application code or runtime byte-code agents (`-javaagent`) inject active `trace_id`, `span_id`, `service_name`, and `environment` into logging framework contexts (Logback, Log4j2, Slf4j). However, this fails on uninstrumented services, polyglot microservices, and native compiled Go/Rust binaries.
+- **The Zero-Code eBPF Breakthrough (OpenTelemetry OBI)**: Bridges network socket ingress (`sys_enter_recvfrom`) with Linux Virtual File System (`stdout`/`stderr`) pipes in kernel Ring 0. Intercepts `write()` system calls, zeroes out raw buffers via `bpf_probe_write_user`, and re-emits structured logs in-flight stamped with `trace_id` and `span_id` with **zero code modifications, zero runtime restarts, and zero proprietary agents**. *(See companion repository [github.com/nubenetes/obi-trace-log-correlation](https://github.com/nubenetes/obi-trace-log-correlation))*.
 
 ---
 
